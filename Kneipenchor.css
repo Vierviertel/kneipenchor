@@ -197,6 +197,9 @@ body {
 .mapboxgl-popup {
   z-index: 9999; /* or a value higher than your site's overlay */
 }
+.mapboxgl-map {
+    overflow: inherit;
+}
 
 .map-decoration-1, .map-decoration-2 {
   position: absolute;
