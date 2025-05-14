@@ -413,51 +413,93 @@ body {
 /* ---------------------------------------- */
 /* ========== 6. Contact ========= */
 /* ---------------------------------------- */
-.contact-section, .forum-section, .footer-section {
+.contact-section {
+  display: flex;
   padding: 80px 100px;
-  width: 100%;
-  background-color: #fff;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
-.contact-title, .forum-title, .footer-title {
-  font-size: 24px;
-  font-family: Manrope, -apple-system, Roboto, Helvetica, sans-serif;
+.contact-content {
+  flex: 1;
+  min-width: 240px;
+}
+
+.contact-title {
+  color: rgba(43, 43, 43, 1);
+  font-size: 56px;
+  font-family:
+    Manrope,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-weight: 500;
-  color: #2b2b2b;
-  margin: 0 0 24px;
+  line-height: 60px;
+  margin: 0;
+}
+
+.contact-description {
+  color: rgba(0, 0, 0, 1);
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 28px;
 }
 
 .contact-form {
+  flex: 1;
+  min-width: 240px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.required {
+  font-weight: 300;
+}
+
+.name-inputs {
   display: flex;
-  flex-direction: column;
   gap: 24px;
-  max-width: 600px;
 }
 
-.contact-form input,
-.contact-form textarea {
-  font-family: Nunito Sans, -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 14px;
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
+.input-group {
+  flex: 1;
+}
+
+.form-input,
+.form-textarea {
   width: 100%;
-}
-
-.contact-form textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.contact-form button {
   border-radius: 24px;
-  background-color: #000;
-  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 1);
+  min-height: 39px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.submit-button {
+  border-radius: 24px;
+  background-color: rgba(255, 237, 0, 1);
+  min-height: 48px;
   padding: 12px 24px;
-  border: none;
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2.1px;
+  border: none;
   cursor: pointer;
 }
 
