@@ -256,45 +256,34 @@ body {
 /* ========== 5. Choir Popups auf Karte =============== */
 /* ---------------------------------------- */
 .mapboxgl-popup-content {
-  width: 360px !important;
-  padding: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  max-width: 360px;
   font-family: var(--font-alt);
+  font-size: 14px;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* Bild mit 16:9 Seitenverhältnis */
-.chor-popup img {
+.chor-popup {
+  display: flex;
+  flex-direction: column;
+}
+
+.chor-popup-img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  display: block;
 }
 
-/* Content */
-.chor-popup-content {
-  padding: 16px 20px;
-  background: var(--color-white);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.chor-popup-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 12px 16px 4px;
 }
 
-/* Headline */
-.chor-popup h3 {
-  font-size: var(--font-size-lg);
-  margin: 0;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-dark-text);
-}
-
-/* Beschreibung mit max. 4 Zeilen und Truncation */
-.chor-popup .description {
-  font-size: var(--font-size-sm);
+.chor-popup-desc {
+  margin: 0 16px 12px;
   line-height: 1.4;
-  color: var(--color-dark-text);
-  max-height: calc(1.4em * 4);
+  max-height: 5.6em; /* 4 Zeilen */
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -302,64 +291,53 @@ body {
   -webkit-box-orient: vertical;
 }
 
-/* Trennlinie */
-.chor-popup hr {
+.chor-popup-line {
   border: none;
-  border-top: 0.5px solid #ccc;
-  margin: 0;
+  border-top: 0.5px solid #aaa;
+  margin: 0 16px 12px;
 }
 
-/* Chorleitung */
-.chor-popup .chorleiter {
+.chor-popup-leitung {
   text-align: center;
-  font-size: var(--font-size-sm);
-  color: var(--color-dark-text);
-  margin: 12px 0;
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
-/* 3 Spalten mit Zahleninfos */
-.chor-popup .stats {
+.chor-popup-stats {
   display: flex;
-  justify-content: space-between;
-  gap: 8px;
+  justify-content: space-around;
   text-align: center;
+  margin: 0 16px 16px;
 }
 
-.chor-popup .stats-item {
-  flex: 1;
+.chor-popup-stats .label {
+  font-size: 12px;
+  color: #666;
 }
 
-.chor-popup .stats-item-title {
-  font-size: var(--font-size-sm);
-  color: var(--color-dark-text);
+.chor-popup-stats .value {
+  font-weight: bold;
+  font-size: 16px;
 }
 
-.chor-popup .stats-item-value {
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-md);
-}
-
-/* Button */
-.chor-popup .chor-btn {
-  margin-top: 12px;
+.chor-popup-btn {
+  background-color: #ffED00;
+  color: #000;
+  text-align: center;
+  display: block;
+  margin: 0 16px 12px;
   padding: 12px 16px;
-  background-color: var(--color-yellow);
-  color: var(--color-black);
-  font-weight: var(--font-weight-medium);
-  text-align: center;
-  border-radius: var(--border-radius-sm);
+  border-radius: 8px;
+  font-weight: bold;
   text-decoration: none;
-  display: inline-block;
-  font-size: var(--font-size-sm);
 }
 
-/* Kontaktblock */
-.chor-popup .kontakt {
-  margin-top: 16px;
+.chor-popup-kontakt {
   text-align: center;
-  font-size: var(--font-size-sm);
-  color: var(--color-dark-text);
+  font-size: 13px;
+  margin-bottom: 12px;
 }
+
 
 
 /* ---------------------------------------- */
