@@ -252,9 +252,118 @@ body {
   padding: var(--padding-sm);
   border-radius: var(--border-radius-sm);
 }
+/* ---------------------------------------- */
+/* ========== 5. Choir Popups auf Karte =============== */
+/* ---------------------------------------- */
+.mapboxgl-popup-content {
+  width: 360px !important;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  font-family: var(--font-alt);
+}
+
+/* Bild mit 16:9 Seitenverhältnis */
+.chor-popup img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content */
+.chor-popup-content {
+  padding: 16px 20px;
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Headline */
+.chor-popup h3 {
+  font-size: var(--font-size-lg);
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-dark-text);
+}
+
+/* Beschreibung mit max. 4 Zeilen und Truncation */
+.chor-popup .description {
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  color: var(--color-dark-text);
+  max-height: calc(1.4em * 4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+/* Trennlinie */
+.chor-popup hr {
+  border: none;
+  border-top: 0.5px solid #ccc;
+  margin: 0;
+}
+
+/* Chorleitung */
+.chor-popup .chorleiter {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-dark-text);
+  margin: 12px 0;
+}
+
+/* 3 Spalten mit Zahleninfos */
+.chor-popup .stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: center;
+}
+
+.chor-popup .stats-item {
+  flex: 1;
+}
+
+.chor-popup .stats-item-title {
+  font-size: var(--font-size-sm);
+  color: var(--color-dark-text);
+}
+
+.chor-popup .stats-item-value {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md);
+}
+
+/* Button */
+.chor-popup .chor-btn {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background-color: var(--color-yellow);
+  color: var(--color-black);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--font-size-sm);
+}
+
+/* Kontaktblock */
+.chor-popup .kontakt {
+  margin-top: 16px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-dark-text);
+}
+
 
 /* ---------------------------------------- */
-/* ========== 5. Choir List =============== */
+/* ========== 6. Choir List =============== */
 /* ---------------------------------------- */
 .choir-list {
   padding: 80px 100px;
@@ -415,7 +524,7 @@ body {
 }
 
 /* ---------------------------------------- */
-/* ========== 6. Contact ========= */
+/* ========== 7. Contact ========= */
 /* ---------------------------------------- */
 .contact-section {
   display: flex;
@@ -508,7 +617,7 @@ body {
 }
 
 /* ---------------------------------------- */
-/* ========== 7. Footer =================== */
+/* ========== 8. Footer =================== */
 /* ---------------------------------------- */
 footer {
   background-color: var(--color-black);
