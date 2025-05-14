@@ -150,12 +150,16 @@ body {
 /* ---------------------------------------- */
 
 .map-section {
-  position: relative;
+  position: relative;/* Positionierung der Karte, um das Overlay oben zu platzieren */
+  background-color: var(--color-white);
+  padding: 60px var(--gap-xl) 100px;
   width: 100%;
 }
 
 .map-container {
+  position: relative;
   width: 100%;
+  z-index: 1; /* Z-index der Karte niedrig, sodass Overlays drüber liegen */
 }
 
 .map-title {
@@ -183,11 +187,13 @@ body {
 }
 
 .map-overlay {
-  aspect-ratio: 0.66;
-  width: 235px;
   position: absolute;
-  right: 59px;
-  top: -24px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; /* Hoher Z-index für die Overlays */
+  pointer-events: none; /* Verhindert, dass das Overlay die Interaktivität der Karte blockiert */
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -223,6 +229,24 @@ body {
   top: 263px;
   width: 77px;
   height: 105px;
+}
+/* Überlagernde Elemente wie Pins, Karteninfos usw. */
+.overlay-pin {
+  position: absolute;
+  z-index: 20; /* Höherer Z-index für interaktive Elemente wie Pins */
+  pointer-events: auto; /* Stellt sicher, dass die Pins klickbar sind */
+}
+
+/* Beispiel für andere Overlays (z.B. Hinweise, Fenster etc.) */
+.overlay-info {
+  position: absolute;
+  top: 50%; /* Beispielplatzierung */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: var(--padding-sm);
+  border-radius: var(--border-radius-sm);
 }
 
 /* ---------------------------------------- */
