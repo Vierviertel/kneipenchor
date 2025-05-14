@@ -4,7 +4,7 @@ const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/light-v10',
   center: [10.45, 51.16], // Mittelpunkt Deutschland
-  zoom: 11
+  zoom: 5
 });
 
 // Pins und Popups aus chorDaten.js laden
