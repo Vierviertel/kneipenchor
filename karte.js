@@ -3,7 +3,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrc
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/light-v10',
-  center: [8.4037, 49.0069], // Zentrum Karlsruhe
+  center: [10.45, 51.16], // Mittelpunkt Deutschland
   zoom: 11
 });
 
