@@ -1147,11 +1147,7 @@ textarea.form-input {
   padding: 60px 100px 100px;
   width: 100%;
 }
-  .choir-list {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
+
 
 
 
