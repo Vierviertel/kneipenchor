@@ -151,7 +151,7 @@ body {
 
 .map-section {
   position: relative;/* Positionierung der Karte, um das Overlay oben zu platzieren */
-  background-color: var(--color-white);
+  background-color: red; var(--color-white);
   padding: 60px var(--gap-xl) 100px;
   width: 100%;
 }
