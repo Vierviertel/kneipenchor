@@ -192,13 +192,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 10; /* Hoher Z-index für die Overlays */
   pointer-events: none; /* Verhindert, dass das Overlay die Interaktivität der Karte blockiert */
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
 }
-.mapboxgl-popup-content .mapboxgl-popup mapboxgl-popup-anchor-top {
-  z-index: 9999 !important;
-  position: relative;
+.mapboxgl-popup {
+  z-index: 9999; /* or a value higher than your site's overlay */
 }
 
 .map-decoration-1, .map-decoration-2 {
