@@ -2,6 +2,10 @@
 <html>
 <head>
 <link rel="stylesheet" href="Kneipenchor.css">
+  <!-- Mapbox CSS + JS -->
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
 </head>
 <body>
 
@@ -18,7 +22,10 @@
   </nav>
 </header>
 
-<section class="map-section">
+<!-- Karte -->
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+  <section class="map-section">
   <div class="map-container">
     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/08ea47893b9cad59fb7d98646ad1e0092fefae0b?placeholderIfAbsent=true&apiKey=3ba8581990fc4391bc60c3f91f7fe979" alt="Map" class="map-image" />
   </div>
@@ -296,6 +303,46 @@
     </div>
   </nav>
 </footer>
+
+<script>
+  mapboxgl.accessToken = 'DEIN_MAPBOX_TOKEN_HIER';
+
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11', // oder dein eigenes Style-URL
+    center: [10.5, 51], // Deutschland
+    zoom: 5.2
+  });
+
+  // Beispielmarker mit Popup
+  const chöre = [
+    {
+      name: "Kneipenchor Karlsruhe",
+      coords: [8.4037, 49.0069],
+      html: `
+        <div class="overlay-card">
+          <img src="..." alt="Logo" class="featured-image" />
+          <h3>Kneipenchor Karlsruhe</h3>
+          <p>Lebendiges Chorprojekt seit 2012...</p>
+          <p><strong>Chorleitung:</strong> Jimmy Röck</p>
+          <p><strong>Aktive:</strong> 160</p>
+          <p><strong>Nächstes Konzert:</strong> 30.12.26</p>
+          <p><strong>Aufnahmestopp:</strong> Nein</p>
+          <a href="http://www.karlsruherkneipenchor.de">Zur Website</a><br>
+          <strong>kontakt@...</strong>
+        </div>
+      `
+    },
+    // Weitere Chöre hier eintragen
+  ];
+
+  chöre.forEach((chor) => {
+    new mapboxgl.Marker()
+      .setLngLat(chor.coords)
+      .setPopup(new mapboxgl.Popup().setHTML(chor.html))
+      .addTo(map);
+  });
+</script>
 
 </body>
 </html>
