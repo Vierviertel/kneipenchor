@@ -1134,20 +1134,6 @@ textarea.form-input {
   padding: 0;
   position: relative;
 }
-@media (max-width: 768px) {
-  .map-container {
-    height: 400px;  /* Kleinere Höhe auf kleinen Bildschirmen */
-  }
-  .map-section {
-  min-height: 200px; /* Passt die Höhe der Map an */
-  background-color: rgb(253 247 240);
-  position: relative;
-  width: 100%;
-}
-
-
-
-
 
 
 }
