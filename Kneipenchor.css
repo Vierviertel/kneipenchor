@@ -150,9 +150,7 @@ body {
 /* ---------------------------------------- */
 
 .map-section {
-  background-color: var(--color-white);
   position: relative;
-  padding: 60px var(--gap-xl) 100px;
   width: 100%;
 }
 
