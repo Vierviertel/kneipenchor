@@ -37,5 +37,26 @@ const chorDaten = {
         link: "https://muenchnerchor.de"
       }
     }
+
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [8.4037, 49.0069] // Karlsruhe
+      },
+      properties: {
+        name: "Kneipenchor Karlsruhe",
+        beschreibung: "Lebendiges Chroprojekt seit 2012, Lorem Ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+        leitung: "Jimmy Röck",
+        saenger: 160,
+        konzert: "5. Juli 2025",
+        aufnahmestopp: false,
+        bild: "https://via.placeholder.com/360x202.png?text=Münchner+Chor",
+        kontakt: "kontakt@karlsruherkneipenchor.de",
+        link: "https://karlsruherkneipenchor.de"
+      }
+    }
+
+
   ]
 };
