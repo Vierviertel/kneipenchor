@@ -36,7 +36,7 @@ const chorDaten = {
         kontakt: "info@muenchnerchor.de",
         link: "https://muenchnerchor.de"
       }
-    }
+    },
 
     {
       type: "Feature",
