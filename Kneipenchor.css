@@ -151,14 +151,13 @@ body {
 
 .map-section {
   position: relative;/* Positionierung der Karte, um das Overlay oben zu platzieren */
-  background-color: green; var(--color-white);
+  background-color: red; var(--color-white);
   width: 100%;
 }
 
 .map-container {
   position: relative;
   width: 100%;
-  z-index: 1; /* Z-index der Karte niedrig, sodass Overlays drüber liegen */
 }
 
 .map-title {
@@ -226,7 +225,6 @@ body {
 
 .map-marker, .marker-1, .marker-2 {
   position: absolute;
-  z-index: 1;
 }
 
 .marker-1 {
@@ -242,24 +240,7 @@ body {
   width: 77px;
   height: 105px;
 }
-/* Überlagernde Elemente wie Pins, Karteninfos usw. */
-.overlay-pin {
-  position: absolute;
-  z-index: 20; /* Höherer Z-index für interaktive Elemente wie Pins */
-  pointer-events: auto; /* Stellt sicher, dass die Pins klickbar sind */
-}
 
-/* Beispiel für andere Overlays (z.B. Hinweise, Fenster etc.) */
-.overlay-info {
-  position: absolute;
-  top: 50%; /* Beispielplatzierung */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 15;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: var(--padding-sm);
-  border-radius: var(--border-radius-sm);
-}
 /* ---------------------------------------- */
 /* ========== 5. Choir Popups auf Karte =============== */
 /* ---------------------------------------- */
