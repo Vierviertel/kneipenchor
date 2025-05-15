@@ -9,9 +9,12 @@ const chorDaten = {
       },
       properties: {
         name: "Kreuzberger Kneipenchor",
+        stadt: "Berlin",
+        bundesland: "Berlin",
         beschreibung: "Ein Feierabendchor für alle Stimmen in Kreuzberg.",
         leitung: "Anna Musterfrau",
         saenger: 34,
+        genres: "Pop",
         aufnahmestopp: false,
         bild: "bilder/Berliner_Kneipenchor.png",
         kontakt: "kontakt@kneipenchor-berlin.de",
