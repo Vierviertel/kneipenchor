@@ -164,7 +164,7 @@ body {
 
 .map-container {
   position: relative;
-  overflow: visible !important;
+  overflow: hidden !important;
   width: 100%;
   z-index: 0;
 }
