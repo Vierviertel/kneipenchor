@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("choir-list");
   const bundeslandFilter = document.getElementById("bundesland-filter");
   const genreFilter = document.getElementById("genre-filter");
+  const aufnahmestoppFilter = document.getElementById("aufnahmestopp-filter");
 
   if (!container) {
     console.error("Fehler: Kein Element mit ID 'choir-list' gefunden.");
