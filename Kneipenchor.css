@@ -269,7 +269,7 @@ body {
 .chor-popup-facts {
   display: flex;
   max-width: 360px;
-  gap: 12px; /* Abstand Bild - Text */
+  gap: 8px; /* Abstand Bild - Text */
   align-items: flex-start; /* Damit Bild und Text oben ausgerichtet sind */
 }
 
