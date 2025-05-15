@@ -40,6 +40,16 @@ if (!chorDaten || !Array.isArray(chorDaten.features)) {
       </div>
     `;
 
+    new mapboxgl.Popup({
+  offset: 15,
+  anchor: 'bottom',
+  closeButton: true,
+  closeOnClick: false
+})
+.setLngLat(geometry.coordinates)
+.setHTML(popupHTML)
+.addTo(map);
+
     new mapboxgl.Marker()
       .setLngLat(geometry.coordinates)
       .setPopup(new mapboxgl.Popup({ offset: 15, anchor: 'auto' }).setHTML(popupHTML))
