@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   bundeslandFilter.addEventListener("change", applyFilters);
   genreFilter.addEventListener("change", applyFilters);
+  aufnahmestoppFilter.addEventListener("change", applyFilters);
 
   // Initial render
   renderList(chorDaten.features);
@@ -80,6 +81,7 @@ function applyFilters() {
   const bundesland = bundeslandFilter.value;
   const genre = genreFilter.value;
   const ohneAufnahmestopp = aufnahmestoppFilter.checked;
+const matchAufnahmestopp = !ohneAufnahmestopp || props.aufnahmestopp === false;
 
   const filtered = chorDaten.features.filter((feature) => {
     const props = feature.properties;
