@@ -4,7 +4,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrc
 // Karte initialisieren
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/standard',
+  style: 'mapbox://styles/mapbox/streets-v12',
   center: [10.5, 51], // Deutschland
   zoom: 5
 });
