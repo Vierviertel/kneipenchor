@@ -129,10 +129,6 @@ map.on('load', () => {
     el.style.height = `${height}px`;
     el.style.backgroundSize = '100%';
 
-    // Optional: add a click event for popups
-    el.addEventListener('click', () => {
-      window.alert(feature.properties.message);
-    });
 
     new mapboxgl.Marker(el)
       .setLngLat(feature.geometry.coordinates)
