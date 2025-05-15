@@ -1,31 +1,40 @@
-function renderChorListe(daten) {
-  const container = document.getElementById('chor-liste');
-  container.innerHTML = '';
-  daten.forEach(chor => {
-    const el = document.createElement('div');
-    el.className = 'chor-card';
-    el.innerHTML = `
-      <img src="${chor.bild}" alt="${chor.name}">
-      <h3>${chor.name}</h3>
-      <p>${chor.beschreibung}</p>
-    `;
-    container.appendChild(el);
-  });
-}
+const chorListeContainer = document.getElementById("chor-liste");
 
-function filterChorListe() {
-  const selectedStadt = document.getElementById('bundesland-filter').value;
-  const selectedGenre = document.getElementById('genre-filter').value;
+chorDaten.forEach(chor => {
+  const card = document.createElement("article");
+  card.className = "choir-card";
 
-  const gefiltert = chorDaten.filter(chor => {
-    return (selectedStadt === 'alle' || chor.stadt === selectedStadt) &&
-           (selectedGenre === 'alle' || chor.genre === selectedGenre);
-  });
+  card.innerHTML = `
+    <img src="${chor.bild}" alt="${chor.name}" class="choir-image" />
+    <div class="choir-info">
+      <h3 class="choir-name">${chor.name}</h3>
+      <p class="choir-description">${chor.beschreibung}</p>
+      <div class="conductor-info">
+        <span class="label">Chorleitung:</span>
+        <span class="conductor-name">${chor.leitung}</span>
+      </div>
+    </div>
+    <div class="choir-details">
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-label">Aktive SängerInnen:</span>
+          <span class="stat-value">${chor.saenger}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">nächstes Konzert:</span>
+          <span class="stat-value">${chor.konzert}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Aufnahmestopp:</span>
+          <span class="stat-value">${chor.aufnahmestopp ? "ja" : "nein"}</span>
+        </div>
+      </div>
+      <a href="${chor.link}" class="choir-website" target="_blank">${chor.link}</a>
+      <div class="contact-info">
+        <p class="contact-text">Kontakt:<br><strong>${chor.kontakt}</strong></p>
+      </div>
+    </div>
+  `;
 
-  renderChorListe(gefiltert);
-}
-
-document.getElementById('stadt-filter').addEventListener('change', filterChorListe);
-document.getElementById('genre-filter').addEventListener('change', filterChorListe);
-
-renderChorListe(chorDaten); // Initialanzeige
+  chorListeContainer.appendChild(card);
+});
