@@ -151,7 +151,7 @@ body {
 
 .map-section {
   position: relative;/* Positionierung der Karte, um das Overlay oben zu platzieren */
-  background-color: red; var(--color-white);
+  background-color: green; var(--color-white);
   width: 100%;
 }
 
@@ -205,7 +205,7 @@ body {
   
 
 .mapboxgl-map {
-    overflow: inherit;
+    overflow: inherit !important;
 }
 
 .map-decoration-1, .map-decoration-2 {
@@ -249,7 +249,6 @@ body {
   font-family: var(--font-alt);
   font-size: 14px;
   padding: 0;
-  overflow: hidden;
 }
 
 .chor-popup {
