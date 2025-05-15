@@ -30,7 +30,21 @@ chorDaten.features.forEach((chor) => {
       </div>
     </div>
   `;
+  
+chorDaten.features.forEach((chor) => {
+  const { geometry, properties } = chor;
 
+  if (!geometry || !geometry.coordinates || geometry.coordinates.length !== 2) {
+    console.warn('Ungültige Koordinaten:', geometry);
+    return; // überspringt diesen Eintrag
+  }
+
+  const popupHTML = `
+    <div class="chor-popup">
+      ...
+    </div>
+  `;
+  
   new mapboxgl.Marker()
   .setLngLat(geometry.coordinates)
   .setPopup(
