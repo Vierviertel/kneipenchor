@@ -72,17 +72,70 @@ map.on('mouseleave', 'choere', () => {
   map.getCanvas().style.cursor = '';
 });
 
-for (const marker of geojson.features) {
-  const el = document.createElement('div');
-  const width = marker.properties.iconSize[0];
-  const height = marker.properties.iconSize[1];
-  el.className = 'marker';
-  el.style.backgroundImage = `url(https://vierviertel.github.io/kneipenchor/bilder/Logo_Kneipenchor_Karlsruhe.png)`;
-  el.style.width = `${width}px`;
-  el.style.height = `${height}px`;
-  el.style.backgroundSize = '100%';
+// 5 verschiedene Pins 
 
-  new mapboxgl.Marker(el)
-    .setLngLat(marker.geometry.coordinates)
-    .addTo(map);
-}
+// Example GeoJSON with a 'pinType' property
+const geojson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      properties: {
+        message: 'Pin 1',
+        pinType: 1,
+        iconSize: [40, 40]
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: [13.4050, 52.52]
+      }
+    },
+    {
+      type: 'Feature',
+      properties: {
+        message: 'Pin 2',
+        pinType: 2,
+        iconSize: [40, 40]
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: [11.5761, 48.1374]
+      }
+    },
+    // ... add more features for pinType 3, 4, 5
+  ]
+};
+
+
+
+// Pin image URLs for each type
+const pinImages = {
+  1: 'https://vierviertel.github.io/kneipenchor/bilder/Logo_Kneipenchor_Karlsruhe.png',
+  2: 'https://example.com/pin2.png',
+  3: 'https://example.com/pin3.png',
+  4: 'https://example.com/pin4.png',
+  5: 'https://example.com/pin5.png'
+};
+
+map.on('load', () => {
+  for (const feature of geojson.features) {
+    const el = document.createElement('div');
+    const width = feature.properties.iconSize[0];
+    const height = feature.properties.iconSize[1];
+    el.className = 'marker';
+    // Select the correct pin image based on pinType
+    el.style.backgroundImage = `url(${pinImages[feature.properties.pinType]})`;
+    el.style.width = `${width}px`;
+    el.style.height = `${height}px`;
+    el.style.backgroundSize = '100%';
+
+    // Optional: add a click event for popups
+    el.addEventListener('click', () => {
+      window.alert(feature.properties.message);
+    });
+
+    new mapboxgl.Marker(el)
+      .setLngLat(feature.geometry.coordinates)
+      .addTo(map);
+  }
+});
