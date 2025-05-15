@@ -56,7 +56,7 @@ const chorDaten = {
         leitung: "Jimmy Röck",
         saenger: 160,
         genres: ["Pop", "Rock"],
-        aufnahmestopp: false,
+        aufnahmestopp: true,
         bild: "bilder/Logo_Kneipenchor_Karlsruhe.png",
         kontakt: "kontakt@karlsruherkneipenchor.de",
         link: "https://karlsruherkneipenchor.de"
