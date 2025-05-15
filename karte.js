@@ -34,9 +34,13 @@ map.on('click', 'choere', (e) => {
 
   const html = `
     <div class="chor-popup">
+    <div class="chor-facts">
       <img class="chor-popup-img" src="${props.bild}" alt="${props.name}">
-      <div class="chor-popup-title">${props.name}</div>
-      <div class="chor-popup-desc">${props.beschreibung}</div>
+       <div class="chor-text">
+        <div class="chor-popup-title">${props.name}</div>
+        <div class="chor-popup-desc">${props.beschreibung}</div>
+       </div>
+      </div>
       <hr class="chor-popup-line">
       <div class="chor-popup-leitung">Leitung: ${props.leitung}</div>
       <div class="chor-popup-stats">
