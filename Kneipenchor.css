@@ -199,7 +199,6 @@ body {
 }
 .mapboxgl-popup {
   z-index: 99999 !important; /* or a value higher than your site's overlay */
-  position: absolute !important;
   }
   
 
