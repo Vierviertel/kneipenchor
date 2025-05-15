@@ -5,11 +5,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrc
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/standard',
-  config: {
-    basemap: {
-      theme: 'monochrome'
-    }
-  },
   center: [10.5, 51], // Deutschland
   zoom: 5
 });
