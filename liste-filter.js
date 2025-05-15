@@ -56,12 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilters() {
     const bundesland = bundeslandFilter.value;
     const genre = genreFilter.value;
+    const ohneAufnahmestopp = aufnahmestoppFilter.checked;
 
     const filtered = chorDaten.features.filter((feature) => {
       const props = feature.properties;
       const matchBundesland = bundesland === "alle" || props.bundesland === bundesland;
       const matchGenre = genre === "alle" || props.genres === genre;
-      return matchBundesland && matchGenre;
+      const matchAufnahmestopp = !ohneAufnahmestopp || props.aufnahmestopp === false;
+      return matchBundesland && matchGenre && matchAufnahmestopp;
     });
 
     renderList(filtered);
