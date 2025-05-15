@@ -38,10 +38,11 @@ chorDaten.features.forEach((feature) => {
   markerEl.style.backgroundSize = 'contain';
   markerEl.style.cursor = 'pointer';
 
-  const marker = new mapboxgl.Marker(markerEl)
+  const marker = new mapboxgl.Marker({ element: markerEl })
     .setLngLat(coords)
     .addTo(map);
 
+  // Klick-Event für Marker: Popup wird geöffnet
   markerEl.addEventListener('click', () => {
     popup.setLngLat(coords).addTo(map);
   });
