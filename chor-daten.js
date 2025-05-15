@@ -55,7 +55,7 @@ const chorDaten = {
         beschreibung: "Lebendiges Chroprojekt seit 2012, Lorem Ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
         leitung: "Jimmy Röck",
         saenger: 160,
-        genres: "Rock",
+        genres: ["Pop", "Rock"],
         aufnahmestopp: false,
         bild: "bilder/Logo_Kneipenchor_Karlsruhe.png",
         kontakt: "kontakt@karlsruherkneipenchor.de",
