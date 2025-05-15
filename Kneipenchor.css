@@ -397,6 +397,13 @@ select {
   padding-right: 40px; /* Platz für Icon */
 }
 
+.filter-buttons,
+#bundesland-filter,
+#genre-filter {
+  margin: 8px;
+}
+
+
 
 .filter-buttons {
   display: flex;
