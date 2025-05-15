@@ -384,11 +384,14 @@ select {
   appearance: none;        /* entfernt Standard-Pfeil */
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 1rem;
+  background-color: none;
+  border: 1px solid #000;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.1px;
   cursor: pointer;
   background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
