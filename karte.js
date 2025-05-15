@@ -72,3 +72,17 @@ map.on('mouseleave', 'choere', () => {
   map.getCanvas().style.cursor = '';
 });
 
+for (const marker of geojson.features) {
+  const el = document.createElement('div');
+  const width = marker.properties.iconSize[0];
+  const height = marker.properties.iconSize[1];
+  el.className = 'marker';
+  el.style.backgroundImage = `url(https://vierviertel.github.io/kneipenchor/bilder/Logo_Kneipenchor_Karlsruhe.png)`;
+  el.style.width = `${width}px`;
+  el.style.height = `${height}px`;
+  el.style.backgroundSize = '100%';
+
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
+}
