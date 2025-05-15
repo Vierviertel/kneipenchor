@@ -35,7 +35,7 @@ chorDaten.features.forEach((chor) => {
   .setLngLat(geometry.coordinates)
   .setPopup(
     new mapboxgl.Popup({
-      offset: 5,
+      offset: 15,
       anchor: 'auto'
     }).setHTML(popupHTML)
   )
