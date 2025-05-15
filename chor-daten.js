@@ -13,7 +13,7 @@ const chorDaten = {
         leitung: "Anna Musterfrau",
         saenger: 34,
         aufnahmestopp: false,
-        bild: "https://via.placeholder.com/360x202.png?text=Kreuzberger+Chor",
+        bild: "bilder/Berliner_Kneipenchor.png",
         kontakt: "kontakt@kneipenchor-berlin.de",
         link: "https://kneipenchor-berlin.de"
       }
@@ -30,7 +30,7 @@ const chorDaten = {
         leitung: "Sepp Klangmeister",
         saenger: 22,
         aufnahmestopp: true,
-        bild: "https://via.placeholder.com/360x202.png?text=Münchner+Chor",
+        bild: "bilder/Logo_Kneipenchor_Wuerzburg.png",
         kontakt: "info@muenchnerchor.de",
         link: "https://muenchnerchor.de"
       }
@@ -48,7 +48,7 @@ const chorDaten = {
         leitung: "Jimmy Röck",
         saenger: 160,
         aufnahmestopp: false,
-        bild: "https://via.placeholder.com/360x202.png?text=Münchner+Chor",
+        bild: "bilder/Logo_Kneipenchor_Karlsruhe.png",
         kontakt: "kontakt@karlsruherkneipenchor.de",
         link: "https://karlsruherkneipenchor.de"
       }
