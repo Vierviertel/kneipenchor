@@ -1,3 +1,13 @@
+mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrczl1ZjIxaGIzMyJ9.7GPJr4HzvulQJmMXY72CEA';
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/light-v10',
+  center: [10.45, 51.16],
+  zoom: 5
+});
+
+// Sicherheitscheck
 if (!chorDaten || !Array.isArray(chorDaten.features)) {
   console.error("chorDaten.features fehlt oder ist kein Array.");
 } else {
