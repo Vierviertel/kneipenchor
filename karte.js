@@ -110,8 +110,8 @@ const geojson = {
 
 // Pin image URLs for each type
 const pinImages = {
-  1: 'https://vierviertel.github.io/kneipenchor/bilder/Logo_Kneipenchor_Karlsruhe.png',
-  2: 'https://example.com/pin2.png',
+  1: 'pins/pin_01.png',
+  2: 'pins/pin_02.png',
   3: 'https://example.com/pin3.png',
   4: 'https://example.com/pin4.png',
   5: 'https://example.com/pin5.png'
