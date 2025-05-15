@@ -72,3 +72,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial render
   renderList(chorDaten.features);
 });
+
+const aufnahmestoppFilter = document.getElementById("aufnahmestopp-filter");
+
+function applyFilters() {
+  const bundesland = bundeslandFilter.value;
+  const genre = genreFilter.value;
+  const ohneAufnahmestopp = aufnahmestoppFilter.checked;
+
+  const filtered = chorDaten.features.filter((feature) => {
+    const props = feature.properties;
+    const matchBundesland = bundesland === "alle" || props.bundesland === bundesland;
+    const matchGenre = genre === "alle" || (Array.isArray(props.genres) ? props.genres.includes(genre) : props.genres === genre);
+    const matchAufnahmestopp = !ohneAufnahmestopp || props.aufnahmestopp === false;
+    return matchBundesland && matchGenre && matchAufnahmestopp;
+  });
+
+  renderList(filtered);
+}
+
+aufnahmestoppFilter.addEventListener("change", applyFilters);
