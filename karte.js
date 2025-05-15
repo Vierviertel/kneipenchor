@@ -7,7 +7,6 @@ const map = new mapboxgl.Map({
   zoom: 5
 });
 
-// Nur nutzen, nicht nochmal definieren!
 let aktuellesPopup = null;
 
 chorDaten.features.forEach(feature => {
@@ -16,9 +15,13 @@ chorDaten.features.forEach(feature => {
   el.style.width = '24px';
   el.style.height = '24px';
   el.style.backgroundColor = '#ffed00';
-  el.style.borderRadius = '50%';
   el.style.border = '2px solid black';
+  el.style.borderRadius = '50%';
   el.style.cursor = 'pointer';
+
+  const marker = new mapboxgl.Marker(el)
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
 
   const popupHTML = `
     <div class="chor-popup">
@@ -48,13 +51,9 @@ chorDaten.features.forEach(feature => {
 
   const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupHTML);
 
-  new mapboxgl.Marker(el)
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map)
-    .getElement()
-    .addEventListener('click', () => {
-      if (aktuellesPopup) aktuellesPopup.remove();
-      popup.addTo(map);
-      aktuellesPopup = popup;
-    });
+  marker.getElement().addEventListener('click', () => {
+    if (aktuellesPopup) aktuellesPopup.remove();
+    popup.addTo(map);
+    aktuellesPopup = popup;
+  });
 });
