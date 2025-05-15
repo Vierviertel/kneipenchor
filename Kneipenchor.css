@@ -253,7 +253,6 @@ body {
 /* ---------------------------------------- */
 .mapboxgl-popup-content {
   position: relative !important;
-  z-index: 99999 !important;
   border-radius: 16px !important;
   max-width: 360px;
   font-family: var(--font-alt);
