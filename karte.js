@@ -29,18 +29,33 @@ map.on('load', () => {
 
 // Popup bei Klick auf einen Pin anzeigen
 map.on('click', 'choere', (e) => {
-  const feature = e.features[0];
-  const coordinates = feature.geometry.coordinates.slice();
-  const props = feature.properties;
+  const props = e.features[0].properties;
+  const coordinates = e.features[0].geometry.coordinates.slice();
+
   const html = `
-    <strong>${props.name}</strong><br/>
-    ${props.beschreibung}<br/>
-    Leitung: ${props.leitung}<br/>
-    Sänger: ${props.saenger}<br/>
-    Konzert: ${props.konzert}<br/>
-    <img src="${props.bild}" width="180"/><br/>
-    Kontakt: <a href="mailto:${props.kontakt}">${props.kontakt}</a><br/>
-    <a href="${props.link}" target="_blank">Website</a>
+    <div class="chor-popup">
+      <img class="chor-popup-img" src="${props.bild}" alt="${props.name}">
+      <div class="chor-popup-title">${props.name}</div>
+      <div class="chor-popup-desc">${props.beschreibung}</div>
+      <hr class="chor-popup-line">
+      <div class="chor-popup-leitung">Leitung: ${props.leitung}</div>
+      <div class="chor-popup-stats">
+        <div>
+          <div class="label">Sänger:innen</div>
+          <div class="value">${props.saenger}</div>
+        </div>
+        <div>
+          <div class="label">Konzert</div>
+          <div class="value">${props.konzert}</div>
+        </div>
+        <div>
+          <div class="label">Aufnahmestopp</div>
+          <div class="value">${props.aufnahmestopp ? "Ja" : "Nein"}</div>
+        </div>
+      </div>
+      <a class="chor-popup-btn" href="${props.link}" target="_blank">Zur Website</a>
+      <div class="chor-popup-kontakt">Kontakt: <a href="mailto:${props.kontakt}">${props.kontakt}</a></div>
+    </div>
   `;
 
   new mapboxgl.Popup()
