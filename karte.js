@@ -1,14 +1,19 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrczl1ZjIxaGIzMyJ9.7GPJr4HzvulQJmMXY72CEA';
 
 const map = new mapboxgl.Map({
-  container: 'map', // Die ID deines HTML-Elements
+  container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11',
-  center: [10.4515, 51.1657], // Mittelpunkt Deutschland
+  center: [10.4515, 51.1657],
   zoom: 5
 });
 
-// Marker und Popup beim Klick
-chorDaten.features.forEach(chor => {
+chorDaten.features.forEach(feature => {
+  const { coordinates } = feature.geometry;
+  const {
+    name, beschreibung, leitung, saenger,
+    konzert, aufnahmestopp, bild, kontakt, link
+  } = feature.properties;
+
   const el = document.createElement('div');
   el.className = 'marker';
   el.style.width = '32px';
@@ -18,10 +23,8 @@ chorDaten.features.forEach(chor => {
   el.style.cursor = 'pointer';
 
   const marker = new mapboxgl.Marker(el)
-    .setLngLat(chor.geometry.coordinates)
+    .setLngLat(coordinates)
     .addTo(map);
-
-  const { name, beschreibung, leitung, saenger, konzert, aufnahmestopp, bild, kontakt, link } = chor.properties;
 
   const popupHtml = `
     <div class="chor-popup">
@@ -42,8 +45,8 @@ chorDaten.features.forEach(chor => {
 
   const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupHtml);
 
-  marker.getElement().addEventListener('click', () => {
-    popup.addTo(map);
-    popup.setLngLat(chor.geometry.coordinates);
+  // Nur anzeigen, wenn geklickt wird
+  el.addEventListener('click', () => {
+    popup.setLngLat(coordinates).addTo(map);
   });
 });
