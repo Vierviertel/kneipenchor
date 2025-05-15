@@ -32,7 +32,18 @@ chorDaten.features.forEach((chor) => {
   `;
 
   new mapboxgl.Marker()
-    .setLngLat(geometry.coordinates)
-    .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popupHTML))
-    .addTo(map);
+  .setLngLat(geometry.coordinates)
+  .setPopup(
+    new mapboxgl.Popup({
+      offset: {
+        'top': [0, 10],
+        'bottom': [0, -10],
+        'left': [10, 0],
+        'right': [-10, 0]
+      },
+      anchor: 'auto'
+    }).setHTML(popupHTML)
+  )
+  .addTo(map);
+
 });
