@@ -132,6 +132,7 @@ map.on('load', () => {
 
     new mapboxgl.Marker(el)
       .setLngLat(feature.geometry.coordinates)
+      .setPopup(popup) // This attaches the popup to the marker
       .addTo(map);
   }
 });
