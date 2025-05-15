@@ -54,7 +54,7 @@ map.on('click', 'choere', (e) => {
     </div>
   `;
 
-  new mapboxgl.Popup()
+  new mapboxgl.Popup({ maxWidth: "360px" })
     .setLngLat(coordinates)
     .setHTML(html)
     .addTo(map);
