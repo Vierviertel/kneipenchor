@@ -1,10 +1,10 @@
 // Mapbox Access Token setzen
 mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrczl1ZjIxaGIzMyJ9.7GPJr4HzvulQJmMXY72CEA';
 
-// Karte initialisieren
+// Karte initialisieren - funktioniert mit style: 'mapbox://styles/mapbox/streets-v12'
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v12',
+  style: 'mapbox://styles/mapbox/dark-v11',
   center: [10.5, 51], // Deutschland
   zoom: 5
 });
