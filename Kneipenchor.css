@@ -270,6 +270,7 @@ body {
   display: flex;
   max-width: 360px;
   gap: 12px; /* Abstand Bild - Text */
+  align-items: flex-start; /* Damit Bild und Text oben ausgerichtet sind */
 }
 
 .chor-popup-img {
@@ -279,6 +280,9 @@ body {
   max-width: 100%;
   display: block;
   flex-shrink: 0; /* Bild nicht schrumpfen lassen */
+}
+.chor-text {
+  flex: 1; /* Text nimmt den restlichen Platz ein */
 }
 .chor-popup-text {
   flex: 1;
