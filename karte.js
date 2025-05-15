@@ -1,59 +1,58 @@
+// Mapbox Access Token setzen
 mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrczl1ZjIxaGIzMyJ9.7GPJr4HzvulQJmMXY72CEA';
 
+// Karte initialisieren
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [10.4515, 51.1657],
+  style: 'mapbox://styles/mapbox/streets-v12',
+  center: [10.5, 51], // Deutschland
   zoom: 5
 });
 
-let aktuellesPopup = null;
+// Datenquelle und Layer hinzufügen, wenn die Karte geladen ist
+map.on('load', () => {
+  map.addSource('choere', {
+    type: 'geojson',
+    data: chorDaten // chorDaten muss aus chor-daten.js kommen
+  });
 
-chorDaten.features.forEach(feature => {
-  const el = document.createElement('div');
-  el.className = 'chor-marker';
-  el.style.width = '24px';
-  el.style.height = '24px';
-  el.style.backgroundColor = '#ffed00';
-  el.style.border = '2px solid black';
-  el.style.borderRadius = '50%';
-  el.style.cursor = 'pointer';
+  map.addLayer({
+    id: 'choere',
+    type: 'circle',
+    source: 'choere',
+    paint: {
+      'circle-radius': 8,
+      'circle-color': '#4264fb'
+    }
+  });
+});
 
-  const marker = new mapboxgl.Marker(el)
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
-
-  const popupHTML = `
-    <div class="chor-popup">
-      <img class="chor-popup-img" src="${feature.properties.bild}" alt="${feature.properties.name}">
-      <div class="chor-popup-title">${feature.properties.name}</div>
-      <div class="chor-popup-desc">${feature.properties.beschreibung}</div>
-      <hr class="chor-popup-line">
-      <div class="chor-popup-leitung">${feature.properties.leitung}</div>
-      <div class="chor-popup-stats">
-        <div>
-          <div class="label">Sänger:innen</div>
-          <div class="value">${feature.properties.saenger}</div>
-        </div>
-        <div>
-          <div class="label">Konzert</div>
-          <div class="value">${feature.properties.konzert}</div>
-        </div>
-        <div>
-          <div class="label">Aufnahme</div>
-          <div class="value">${feature.properties.aufnahmestopp ? 'Stopp' : 'Offen'}</div>
-        </div>
-      </div>
-      <a class="chor-popup-btn" href="${feature.properties.link}" target="_blank">Zur Website</a>
-      <div class="chor-popup-kontakt">${feature.properties.kontakt}</div>
-    </div>
+// Popup bei Klick auf einen Pin anzeigen
+map.on('click', 'choere', (e) => {
+  const feature = e.features[0];
+  const coordinates = feature.geometry.coordinates.slice();
+  const props = feature.properties;
+  const html = `
+    <strong>${props.name}</strong><br/>
+    ${props.beschreibung}<br/>
+    Leitung: ${props.leitung}<br/>
+    Sänger: ${props.saenger}<br/>
+    Konzert: ${props.konzert}<br/>
+    <img src="${props.bild}" width="180"/><br/>
+    Kontakt: <a href="mailto:${props.kontakt}">${props.kontakt}</a><br/>
+    <a href="${props.link}" target="_blank">Website</a>
   `;
 
-  const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupHTML);
+  new mapboxgl.Popup()
+    .setLngLat(coordinates)
+    .setHTML(html)
+    .addTo(map);
+});
 
-  marker.getElement().addEventListener('click', () => {
-    if (aktuellesPopup) aktuellesPopup.remove();
-    popup.addTo(map);
-    aktuellesPopup = popup;
-  });
+// Mauszeiger ändern, wenn über einen Pin gehovert wird
+map.on('mouseenter', 'choere', () => {
+  map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseleave', 'choere', () => {
+  map.getCanvas().style.cursor = '';
 });
