@@ -269,7 +269,7 @@ body {
 .chor-popup-facts {
   display: flex;
   max-width: 360px;
-  gap: 8px; /* Abstand Bild - Text */
+  gap: 0px; /* Abstand Bild - Text */
   align-items: flex-start; /* Damit Bild und Text oben ausgerichtet sind */
 }
 
@@ -279,6 +279,7 @@ body {
   object-fit: cover;
   max-width: 100%;
   display: block;
+  margin: 8px 0px 8px 16px;
   flex-shrink: 0; /* Bild nicht schrumpfen lassen */
 }
 
