@@ -45,10 +45,6 @@ map.on('click', 'choere', (e) => {
           <div class="value">${props.saenger}</div>
         </div>
         <div>
-          <div class="label">Konzert</div>
-          <div class="value">${props.konzert}</div>
-        </div>
-        <div>
           <div class="label">Aufnahmestopp</div>
           <div class="value">${props.aufnahmestopp ? "Ja" : "Nein"}</div>
         </div>
