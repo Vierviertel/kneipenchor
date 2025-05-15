@@ -71,6 +71,4 @@ map.on('mouseenter', 'choere', () => {
 map.on('mouseleave', 'choere', () => {
   map.getCanvas().style.cursor = '';
 });
-map.on('style.load', () => {
-  map.setConfigProperty('basemap', 'theme', 'monochrome');
-});
+
