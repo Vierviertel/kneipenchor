@@ -197,11 +197,6 @@ body {
   z-index: 99999; /* or a value higher than your site's overlay */
   position: absolute !important;
   }
-
-.mapboxgl-popup-content {
-  position: relative !important;
-  z-index: 99999 !important;
-}
   
 
 .mapboxgl-map {
@@ -245,11 +240,16 @@ body {
 /* ========== 5. Choir Popups auf Karte =============== */
 /* ---------------------------------------- */
 .mapboxgl-popup-content {
+  position: relative !important;
+  z-index: 99999 !important;
+  border-radius: 24px !important;
   max-width: 360px;
   font-family: var(--font-alt);
   font-size: 14px;
   padding: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .2) !important;
 }
+
 
 .chor-popup {
   display: flex;
