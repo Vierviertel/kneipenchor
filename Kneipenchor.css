@@ -624,6 +624,8 @@ select {
   font-size: 14px;
   width: 100%;
   box-sizing: border-box;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
 }
 
 .contact-form .form-textarea {
@@ -644,7 +646,11 @@ select {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.contact-form .submit-btn:hover {
+.form-input:hover,
+.form-input:focus,
+.form-textarea:hover,
+.form-textarea:focus,
+.submit-btn:hover {
   background-color: #fff;
 }
 
