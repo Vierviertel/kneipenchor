@@ -674,7 +674,6 @@ select {
   display: flex;
   max-width: 100%;
   gap: 40px;
-  flex-wrap: wrap;
   justify-content: flex-end; /* optional – richtet alle Sections nach rechts aus */
 }
 
