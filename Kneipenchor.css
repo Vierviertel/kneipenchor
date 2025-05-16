@@ -672,17 +672,19 @@ select {
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
+  justify-content: flex-end; /* optional – richtet alle Sections nach rechts aus */
 }
 
 .footer-section {
-  flex: 1 1 200px;
   display: flex;
   flex-direction: column;
   text-align: left;
+  width: auto; /* lässt Breite vom Inhalt bestimmen */
+  max-width: 300px; /* optional: Begrenzung, falls Inhalte zu lang sind */
 }
 
 .section-title {
-  font-size: 24px;
+  font-size: 18px;
   margin-bottom: 8px;
 }
 
