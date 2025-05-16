@@ -462,11 +462,11 @@ select {
 .choir-image {
   flex-shrink: 1; /* Bild darf auch schrumpfen */
   min-width: 100px; /* aber nicht kleiner als 100px */
-  max-width: 200px;
-  height: auto;
+  max-width: 420px;
+  object-fit: cover; /* Bild füllt Fläche aus, ohne Verzerrung */
+  aspect-ratio: 1.88;
+  width: 100%;
   object-fit: cover;
-  aspekt-ratio: 1.88;
-  border-radius: 8px;
 }
 
 .choir-info, .choir-details {
