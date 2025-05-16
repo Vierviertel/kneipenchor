@@ -724,6 +724,8 @@ select {
     max-width: none;
   }
   .footer-section strong a {
+  all: unset;
+  cursor: pointer;  
   text-decoration: none;
   color: inherit !important;
   font-weight: bold;
