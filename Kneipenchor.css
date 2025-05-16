@@ -595,7 +595,7 @@ select {
     align-items: flex-start;
     gap: 0;
   }
-    .filter-buttons {
+    .filter-buttons #bundesland-filter, #genre-filter {
     flex-direction: column;
     gap: 16px;
     width: 100%;
@@ -603,6 +603,10 @@ select {
   }
     .filter-section select {
     width: 100%;
+  }
+
+  #aufnahmestopp-filter {
+    margin-top: 16px;
   }
 
 
