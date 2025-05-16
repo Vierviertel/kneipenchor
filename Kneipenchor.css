@@ -574,12 +574,7 @@ select {
 .contact-title {
   color: rgba(43, 43, 43, 1);
   font-size: 56px;
-  font-family:
-    Manrope,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: var(--font-alt);
   font-weight: 500;
   line-height: 60px;
   margin: 0;
