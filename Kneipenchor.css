@@ -232,26 +232,12 @@ body {
   bottom: 131px;
 }
 
-.map-marker, .marker-1, .marker-2 {
+.map-marker, .mapboxgl-marker {
   position: absolute;
   top: -24px !important;
 }
 
-/*.marker-1 {
-  left: 67px;
-  top: 130px;
-  width: 81px;
-  height: 105px;
-}
-
-.marker-2 {
-  left: 363px;
-  top: 263px;
-  width: 77px;
-  height: 105px;
-}
-
- ---------------------------------------- */
+/*---------------------------------------- */
 /* ========== 5. Choir Popups auf Karte =============== */
 /* ---------------------------------------- */
 .mapboxgl-popup-content {
