@@ -189,5 +189,17 @@
   <!-- danach: dein Mapbox-Code, der `chorDaten` verwendet -->
   <script src="karte.js"></script>
   <script src="liste-filter.js"></script>
+  
+<!-- Hamburger Script -->
+  <script>
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.main-nav');
+
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+</script>
+
+  
 </body>
 </html>
