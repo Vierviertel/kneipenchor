@@ -113,7 +113,7 @@ const geojson = {
       },
       geometry: {
         type: 'Point',
-        coordinates: [8.4037, 49.0069]
+        coordinates: [8.4037, 49.0069] // Karlsruhe
       }
     },
 
@@ -126,7 +126,7 @@ const geojson = {
       },
       geometry: {
         type: 'Point',
-        coordinates: [49.783333, 9.933333]
+        coordinates: [9.9312, 49.7913] // Würzburg
       }
     },
 
@@ -139,7 +139,7 @@ const geojson = {
       },
       geometry: {
         type: 'Point',
-        coordinates: [49.487768, 4662297]
+        coordinates: [8.466, 49.4877] // Mannheim
       }
     },
     
