@@ -71,7 +71,7 @@ const chorDaten = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [49.783333, 9.933333] // Würzburg
+        coordinates: [9.9312, 49.7913] // Würzburg
       },
       properties: {
         name: "Würzburger Kneipenchor",
@@ -92,7 +92,7 @@ const chorDaten = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [11.5761, 48.1374] // Mannheim
+        coordinates: [8.4660, 49.4877] // Mannheim
       },
       properties: {
         name: "Mannheimer Kneipenchor",
