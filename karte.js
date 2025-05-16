@@ -172,7 +172,6 @@ map.on('load', () => {
 
     new mapboxgl.Marker(el)
       .setLngLat(feature.geometry.coordinates)
-      .setPopup(popup) // Attach popup here
       .addTo(map);
   }
 });
