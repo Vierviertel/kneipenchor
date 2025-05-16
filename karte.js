@@ -25,11 +25,13 @@ map.on('load', () => {
     const coords = feature.geometry.coordinates;
     const pinType = props.pinType || 1;
     const iconSize = props.iconSize || [40, 52];
+    const randomPinType = Math.floor(Math.random() * 5) + 1; // 1 bis 5
+    feature.properties.pinType = randomPinType;
 
     // Marker-Element erstellen
     const el = document.createElement('div');
     el.className = 'marker';
-    el.style.backgroundImage = `url(${pinImages[pinType]})`;
+    el.style.backgroundImage = `url(${pinImages[feature.properties.pinType]})`;
     el.style.width = `${iconSize[0]}px`;
     el.style.height = `${iconSize[1]}px`;
     el.style.backgroundSize = '100%';
