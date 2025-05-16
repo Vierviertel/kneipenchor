@@ -696,9 +696,10 @@ select {
   line-height: 1.5;
 }
 
-.section-content strong {
+.section-link {
   font-weight: bold;
   font-size: 14px;
+  color: inherit;
 }
 
 /* 🔁 Responsive: untereinander auf kleinen Geräten */
@@ -723,11 +724,5 @@ select {
     width: 100%; /* bei schmalem Screen wieder auf volle Breite */
     max-width: none;
   }
-  .footer-section strong a {
-  all: unset;
-  cursor: pointer;  
-  text-decoration: none;
-  color: inherit !important;
-  font-weight: bold;
-}
+  
 }
