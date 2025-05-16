@@ -106,9 +106,6 @@ const geojson = {
   ]
 };
 
-locationIndicatorLayer {
-    emphasisCircleColor("rgba(0, 0, 0, 0);") // Set to your desired color (e.g., red)
-}
 
 // Pin image URLs for each type
 const pinImages = {
