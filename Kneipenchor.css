@@ -234,9 +234,10 @@ body {
 
 .map-marker, .marker-1, .marker-2 {
   position: absolute;
+  top: -24px !important;
 }
 
-.marker-1 {
+/*.marker-1 {
   left: 67px;
   top: 130px;
   width: 81px;
@@ -250,7 +251,7 @@ body {
   height: 105px;
 }
 
-/* ---------------------------------------- */
+ ---------------------------------------- */
 /* ========== 5. Choir Popups auf Karte =============== */
 /* ---------------------------------------- */
 .mapboxgl-popup-content {
