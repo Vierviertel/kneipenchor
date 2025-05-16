@@ -115,6 +115,7 @@ body {
   vertical-align: middle;  /* Falls im Inline-Kontext */
 }
 .hamburger .bar {
+  display: inline-block;
   height: 4px;
   width: 32px;
   background-color: #000;
