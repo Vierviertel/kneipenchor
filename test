@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Test Hamburger</title>
+<style>
+  .hamburger {
+    display: flex;
+    cursor: pointer;
+    width: 40px;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hamburger .bar {
+    height: 4px;
+    background: black;
+    border-radius: 2px;
+  }
+  .main-nav {
+    display: none;
+    background: #eee;
+    padding: 1rem;
+  }
+  .main-nav.open {
+    display: block;
+  }
+  @media(min-width: 1095px) {
+    .hamburger {
+      display: none;
+    }
+    .main-nav {
+      display: block !important;
+    }
+  }
+</style>
+</head>
+<body>
+<button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" type="button">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+<nav class="main-nav">
+  <ul>
+    <li><a href="#">Startseite</a></li>
+    <li><a href="#">Map</a></li>
+    <li><a href="#">Veranstaltungen</a></li>
+  </ul>
+</nav>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const mainNav = document.querySelector('.main-nav');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburger.classList.toggle('active', isOpen);
+  });
+</script>
+</body>
+</html>
