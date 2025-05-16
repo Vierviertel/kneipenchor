@@ -104,7 +104,7 @@ body {
 .hamburger {
   display: none;
   font-size: 40px;         /* Größe des Symbols */
-  line-height: 0px;        /* Gleiche Höhe wie Container für vertikale Zentrierung */
+  line-height: 40px;        /* Gleiche Höhe wie Container für vertikale Zentrierung */
   text-align: center;      /* Horizontal zentrieren */
   width: 48px;
   height: 48px;
