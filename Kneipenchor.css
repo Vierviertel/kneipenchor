@@ -524,7 +524,6 @@ select {
 }
 
 .contact-info {
-  margin-top: 24px;
   display: flex;
   align-items: center;
   gap: 24px;
