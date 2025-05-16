@@ -135,7 +135,7 @@ body {
   }
   .hamburger {
     order: 1; /* ganz links */
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: center;
     gap: 6px;
@@ -157,9 +157,14 @@ body {
     margin-left: auto;
   }
 
-  .main-nav {
+ .main-nav {
     display: none;
-  }
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    background: white;
+    padding: 16px;
+  } 
   .main-nav.open {
     display: flex;
     flex-direction: column;
@@ -168,6 +173,7 @@ body {
   }
 
   .main-nav.active {
+    display: flex;
     transform: translateX(0);
   }
 
