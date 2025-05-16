@@ -34,7 +34,7 @@ const chorDaten = {
         stadt: "München",
         bundesland: "Bayern",
         beschreibung: "Lustiger Haufen mit bayrischem Einschlag. Auftritte vom Münchner Kneipenchor fühlen sich an wie ein Popkonzert, frei und irgendwie auch wild.",
-        leitung: ["Michel Berger", "Linus Mödl"]
+        leitung: ["Michel Berger", "Linus Mödl"],
         saenger: 50,
         genres: "Pop",
         aufnahmestopp: true,
