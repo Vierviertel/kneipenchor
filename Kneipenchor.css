@@ -36,11 +36,7 @@ body {
   background-color: var(--color-light-bg);
   font-family: var(--font-alt);
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 
 
 /* ---------------------------------------- */
