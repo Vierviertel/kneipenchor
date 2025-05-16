@@ -236,6 +236,10 @@ body {
   position: absolute;
   top: -24px !important;
 }
+.marker {
+  display: block;
+  padding: 0; /* No border-radius, no circle */
+}
 
 /*---------------------------------------- */
 /* ========== 5. Choir Popups auf Karte =============== */
