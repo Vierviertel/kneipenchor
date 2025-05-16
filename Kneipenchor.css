@@ -105,7 +105,7 @@ body {
   display: none;
   text-align: center;      /* Horizontal zentrieren */
   width: 48px;
-  height: 48px;
+  height: 40px;
   background: none;
   border: none;
   cursor: pointer;
@@ -114,8 +114,8 @@ body {
 }
 .hamburger .bar {
   display: inline-block;
-  height: 4px;
-  width: 32px;
+  height: 3px;
+  width: 24px;
   background-color: #000;
   border-radius: 2px;
   margin: 4px 0;
