@@ -588,6 +588,11 @@ select {
   }
 }
 
+@media (max-width: 768px) {
+  .filter-section {
+    padding: 40px 20px 60px 20px;
+  }
+
 
 /* ---------------------------------------- */
 /* ========== 7. Contact ========= */
