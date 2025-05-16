@@ -133,6 +133,7 @@ body {
 @media (max-width: 1094px) {
   .main-header {
     flex-direction: row;
+    padding-left: 0;
   }
   .hamburger {
     order: 1; /* ganz links */
