@@ -635,17 +635,19 @@ select {
 
 .submit-button {
   border-radius: 24px;
-  background-color: var(--color-light-bg);
+  background-color: var(--color-yellow);
   min-height: 48px;
   padding: 12px 24px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2.1px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+
 .form-input:hover,
 .form-input:focus,
 .form-textarea:hover,
