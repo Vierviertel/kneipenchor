@@ -90,6 +90,7 @@ const geojson = {
         coordinates: [13.4050, 52.52]
       }
     },
+    
     {
       type: 'Feature',
       properties: {
@@ -102,6 +103,46 @@ const geojson = {
         coordinates: [11.5761, 48.1374]
       }
     },
+
+     {
+      type: 'Feature',
+      properties: {
+        message: 'Pin 2',
+        pinType: 2,
+        iconSize: [40, 52]
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: [8.4037, 49.0069]
+      }
+    },
+
+     {
+      type: 'Feature',
+      properties: {
+        message: 'Pin 2',
+        pinType: 2,
+        iconSize: [40, 52]
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: [49.783333, 9.933333]
+      }
+    },
+
+     {
+      type: 'Feature',
+      properties: {
+        message: 'Pin 2',
+        pinType: 2,
+        iconSize: [40, 52]
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: [49.487768, 4662297]
+      }
+    },
+    
     // ... add more features for pinType 3, 4, 5
   ]
 };
