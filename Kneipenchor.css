@@ -551,13 +551,23 @@ select {
 /* ---------------------------------------- */
 .contact-section {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 80px 100px;
   gap: 40px;
-  flex-wrap: wrap;
 }
 
 .contact-content {
-  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+}
+
+.contact-info,
+.contact-form {
+  flex: 1 1 300px;
   min-width: 240px;
 }
 
@@ -580,11 +590,6 @@ select {
   font-size: 14px;
   font-weight: 400;
   margin-top: 28px;
-}
-
-.contact-form {
-  flex: 1;
-  min-width: 240px;
 }
 
 .form-group {
@@ -611,32 +616,36 @@ select {
   flex: 1;
 }
 
-.form-input,
-.form-textarea {
-  width: 100%;
+.contact-form .form-input,
+.contact-form .form-textarea {
   border-radius: 24px;
-  border: 1px solid rgba(0, 0, 0, 1);
-  min-height: 39px;
-  padding: 8px 16px;
+  border: 1px solid black;
+  padding: 12px 16px;
+  font-size: 14px;
+  width: 100%;
   box-sizing: border-box;
 }
 
-.form-textarea {
-  min-height: 88px;
+.contact-form .form-textarea {
+  min-height: 96px; /* doppelt so hoch wie min-height 39px */
   resize: vertical;
 }
 
 .submit-button {
   border-radius: 24px;
-  background-color: rgba(255, 237, 0, 1);
+  background-color: var(--color-light-bg);
   min-height: 48px;
   padding: 12px 24px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 2.1px;
+  letter-spacing: 1px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contact-form .submit-btn:hover {
+  background-color: #fff;
 }
 
 /* ---------------------------------------- */
