@@ -723,4 +723,9 @@ select {
     width: 100%; /* bei schmalem Screen wieder auf volle Breite */
     max-width: none;
   }
+  .footer-section strong a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
 }
