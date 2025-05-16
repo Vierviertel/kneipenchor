@@ -87,6 +87,7 @@ body {
 
 .cta-button, .register-btn {
   border-radius: var(--border-radius-md);
+  text-decoration: none;
   background-color: var(--color-black);
   color: var(--color-white);
   padding: var(--padding-md);
@@ -96,6 +97,42 @@ body {
   letter-spacing: 2.1px;
   cursor: pointer;
 }
+.hamburger {
+  display: none;
+  font-size: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    margin-left: auto;
+  }
+
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .main-nav.active {
+    display: flex;
+    margin-top: 16px;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .register-btn {
+    align-self: flex-start;
+  }
+}
+
 
 /* ---------------------------------------- */
 /* ========== 3. Hero Section ============= */
