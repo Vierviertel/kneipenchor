@@ -599,7 +599,9 @@ select {
     flex-direction: column;
     gap: 16px;
     width: 100%;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 24px;
   }
     .filter-section select {
     width: 100%;
