@@ -1,78 +1,13 @@
 // Mapbox Access Token setzen
 mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrczl1ZjIxaGIzMyJ9.7GPJr4HzvulQJmMXY72CEA';
 
-// Karte initialisieren - funktioniert mit style: 'mapbox://styles/mapbox/streets-v12'
+// Initialize the map
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/dark-v11',
-  center: [10.5, 51], // Deutschland
+  center: [10.5, 51], // Germany
   zoom: 5
 });
-
-// Datenquelle und Layer hinzufügen, wenn die Karte geladen ist
-map.on('load', () => {
-  map.addSource('choere', {
-    type: 'geojson',
-    data: chorDaten // chorDaten muss aus chor-daten.js kommen
-  });
-
-  map.addLayer({
-    id: 'choere',
-    type: 'circle',
-    source: 'choere',
-    paint: {
-      'circle-radius': 0,
-      'circle-color': '#000'
-    }
-  });
-});
-
-// Popup bei Klick auf einen Pin anzeigen
-map.on('click', 'choere', (e) => {
-  const props = e.features[0].properties;
-  const coordinates = e.features[0].geometry.coordinates.slice();
-
-  const html = `
-    <div class="chor-popup">
-    <div class="chor-popup-facts">
-      <img class="chor-popup-img" src="${props.bild}" alt="${props.name}">
-       <div class="chor-popup-text">
-        <div class="chor-popup-title">${props.name}</div>
-        <div class="chor-popup-desc">${props.beschreibung}</div>
-       </div>
-      </div>
-      <hr class="chor-popup-line">
-      <div class="chor-popup-leitung">Leitung: ${props.leitung}</div>
-      <div class="chor-popup-stats">
-        <div>
-          <div class="label">Sänger:innen</div>
-          <div class="value">${props.saenger}</div>
-        </div>
-        <div>
-          <div class="label">Aufnahmestopp</div>
-          <div class="value">${props.aufnahmestopp ? "Ja" : "Nein"}</div>
-        </div>
-      </div>
-      <a class="chor-popup-btn" href="${props.link}" target="_blank">Zur Website</a>
-      <div class="chor-popup-kontakt">Kontakt: <a href="mailto:${props.kontakt}">${props.kontakt}</a></div>
-    </div>
-  `;
-
-  new mapboxgl.Popup({ maxWidth: "360px" })
-    .setLngLat(coordinates)
-    .setHTML(html)
-    .addTo(map);
-});
-
-// Mauszeiger ändern, wenn über einen Pin gehovert wird
-map.on('mouseenter', 'choere', () => {
-  map.getCanvas().style.cursor = 'pointer';
-});
-map.on('mouseleave', 'choere', () => {
-  map.getCanvas().style.cursor = '';
-});
-
-// 5 verschiedene Pins 
 
 // Example GeoJSON with a 'pinType' property
 const geojson = {
@@ -81,7 +16,14 @@ const geojson = {
     {
       type: 'Feature',
       properties: {
-        message: 'Pin 1',
+        name: 'Chor Berlin',
+        beschreibung: 'Ein Chor aus Berlin.',
+        bild: 'https://example.com/chor-berlin.jpg',
+        leitung: 'Frau Schmidt',
+        saenger: 30,
+        aufnahmestopp: false,
+        link: 'https://chor-berlin.de',
+        kontakt: 'info@chor-berlin.de',
         pinType: 1,
         iconSize: [40, 52]
       },
@@ -90,63 +32,9 @@ const geojson = {
         coordinates: [13.4050, 52.52]
       }
     },
-    
-    {
-      type: 'Feature',
-      properties: {
-        message: 'Pin 2',
-        pinType: 2,
-        iconSize: [40, 52]
-      },
-      geometry: {
-        type: 'Point',
-        coordinates: [11.5761, 48.1374]
-      }
-    },
-
-     {
-      type: 'Feature',
-      properties: {
-        message: 'Pin 2',
-        pinType: 2,
-        iconSize: [40, 52]
-      },
-      geometry: {
-        type: 'Point',
-        coordinates: [8.4037, 49.0069] // Karlsruhe
-      }
-    },
-
-     {
-      type: 'Feature',
-      properties: {
-        message: 'Pin 2',
-        pinType: 2,
-        iconSize: [40, 52]
-      },
-      geometry: {
-        type: 'Point',
-        coordinates: [9.9312, 49.7913] // Würzburg
-      }
-    },
-
-     {
-      type: 'Feature',
-      properties: {
-        message: 'Pin 2',
-        pinType: 2,
-        iconSize: [40, 52]
-      },
-      geometry: {
-        type: 'Point',
-        coordinates: [8.466, 49.4877] // Mannheim
-      }
-    },
-    
-    // ... add more features for pinType 3, 4, 5
+    // ... weitere Features für andere Pins ...
   ]
 };
-
 
 // Pin image URLs for each type
 const pinImages = {
@@ -163,15 +51,50 @@ map.on('load', () => {
     const width = feature.properties.iconSize[0];
     const height = feature.properties.iconSize[1];
     el.className = 'marker';
-    // Select the correct pin image based on pinType
     el.style.backgroundImage = `url(${pinImages[feature.properties.pinType]})`;
     el.style.width = `${width}px`;
     el.style.height = `${height}px`;
     el.style.backgroundSize = '100%';
+    el.style.border = 'none';
+    el.style.borderRadius = '0';
+    el.style.cursor = 'pointer';
+    el.style.padding = 0;
 
+    // Create popup HTML
+    const props = feature.properties;
+    const html = `
+      <div class="chor-popup">
+        <div class="chor-popup-facts">
+          <img class="chor-popup-img" src="${props.bild}" alt="${props.name}">
+          <div class="chor-popup-text">
+            <div class="chor-popup-title">${props.name}</div>
+            <div class="chor-popup-desc">${props.beschreibung}</div>
+          </div>
+        </div>
+        <hr class="chor-popup-line">
+        <div class="chor-popup-leitung">Leitung: ${props.leitung}</div>
+        <div class="chor-popup-stats">
+          <div>
+            <div class="label">Sänger:innen</div>
+            <div class="value">${props.saenger}</div>
+          </div>
+          <div>
+            <div class="label">Aufnahmestopp</div>
+            <div class="value">${props.aufnahmestopp ? "Ja" : "Nein"}</div>
+          </div>
+        </div>
+        <a class="chor-popup-btn" href="${props.link}" target="_blank">Zur Website</a>
+        <div class="chor-popup-kontakt">Kontakt: <a href="mailto:${props.kontakt}">${props.kontakt}</a></div>
+      </div>
+    `;
+
+    const popup = new mapboxgl.Popup({ maxWidth: "360px" }).setHTML(html);
 
     new mapboxgl.Marker(el)
       .setLngLat(feature.geometry.coordinates)
+      .setPopup(popup)
       .addTo(map);
   }
 });
+
+// Optional: Change cursor on marker hover (handled by default for HTML markers)
