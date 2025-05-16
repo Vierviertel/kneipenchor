@@ -103,18 +103,17 @@ body {
 /* Hamburger-Icon */
 .hamburger {
   display: none;
-  font-size: 40px;          /* Schriftgröße für das Symbol */
-  line-height: 48px;        /* Vertikale Zentrierung */
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-size: 40px;         /* Größe des Symbols */
+  line-height: 48px;       /* Gleiche Höhe wie Container für vertikale Zentrierung */
+  text-align: center;      /* Horizontal zentrieren */
+  display: inline-block;   /* Damit line-height wirkt */
   width: 48px;
   height: 48px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 999;
+  vertical-align: middle;  /* Falls im Inline-Kontext */
 }
 .hamburger .bar {
   height: 4px;
