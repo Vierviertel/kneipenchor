@@ -123,11 +123,19 @@ body {
 }
 
 @media (max-width: 1080px) {
+  .main-header {
+    flex-direction: row;
+  }
   .hamburger {
-    display: flex;
+    order: 1; /* ganz links */
+  }
+    .site-title {
+    order: 2; /* kommt rechts daneben */
+    margin-left: auto;
   }
 
   .main-nav {
+    order: 3; /* bleibt ganz rechts außerhalb der Header-Zeile */
     position: fixed;
     top: 0;
     left: 0;
