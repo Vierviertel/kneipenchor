@@ -144,6 +144,9 @@ body {
     z-index: 3000; /* höher als das Menü (aktuell z-index: 2000) */
     position: relative; /* notwendig, damit z-index wirkt */
   }
+  .mail-header {
+    padding-left: 24px;
+  }
   .main-nav {
     display: none; /* standard versteckt */
     position: absolute;
