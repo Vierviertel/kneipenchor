@@ -141,6 +141,8 @@ body {
 @media (max-width: 1094px) {
   .hamburger {
     display: block; /* sichtbar */
+    z-index: 3000; /* höher als das Menü (aktuell z-index: 2000) */
+    position: relative; /* notwendig, damit z-index wirkt */
   }
   .main-nav {
     display: none; /* standard versteckt */
