@@ -21,8 +21,8 @@ map.on('load', () => {
     type: 'circle',
     source: 'choere',
     paint: {
-      'circle-radius': 8,
-      'circle-color': '#4264fb'
+      'circle-radius': 0,
+      'circle-color': '#000'
     }
   });
 });
