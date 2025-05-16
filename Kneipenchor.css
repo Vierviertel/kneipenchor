@@ -142,7 +142,7 @@ body {
 /* Mobil */
 @media (max-width: 1094px) {
   .hamburger {
-    display: flex; /* sichtbar */
+    display: block; /* sichtbar */
   }
   .main-nav {
     display: none; /* standard versteckt */
