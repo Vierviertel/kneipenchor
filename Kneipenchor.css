@@ -567,7 +567,7 @@ select {
 
 
 /* Mobile Ansicht: alles untereinander */
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .choir-card {
     flex-direction: column;
     gap: 12px;
