@@ -193,14 +193,20 @@
   <script src="liste-filter.js"></script>
   
 <!-- Hamburger Script -->
-  <script>
-  const hamburger = document.querySelector('.hamburger');
-  const nav = document.querySelector('.main-nav');
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
 
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('active');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      hamburger.classList.toggle('active', isOpen);
+    });
   });
 </script>
+
+  
 
   
 </body>
