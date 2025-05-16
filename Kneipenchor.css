@@ -654,6 +654,24 @@ select {
   background-color: #fff;
 }
 
+@media (max-width: 774px) {
+  .contact-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 100%;
+  }
+
+  .name-inputs {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+
 /* ---------------------------------------- */
 /* ========== 8. Footer =================== */
 /* ---------------------------------------- */
