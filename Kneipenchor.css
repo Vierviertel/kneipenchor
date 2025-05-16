@@ -124,13 +124,13 @@ body {
 }
 
 /* Nur im Desktop-Modus ausblenden */
-@media (min-width: 1000px) {
+@media (min-width: 1094px) {
   .menu-toggle {
     display: none;
   }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1094px) {
   .main-header {
     flex-direction: row;
   }
