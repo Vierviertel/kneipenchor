@@ -576,7 +576,6 @@ select {
   .choir-image {
     width: 100%;           /* Bild nimmt volle Breite ein */
     height: auto;
-    border-radius: 6px;
   }
   
   .choir-info,
