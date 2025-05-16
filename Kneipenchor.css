@@ -567,8 +567,10 @@ select {
 
 
 /* Mobile Ansicht: alles untereinander */
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .choir-card {
+    width: 100%;
+    box-sizing: border-box;
     flex-direction: column;
     gap: 12px;
   }
