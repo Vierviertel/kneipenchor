@@ -362,8 +362,9 @@ body {
 /* ---------------------------------------- */
 /* ========== 6. Choir List =============== */
 /* ---------------------------------------- */
+
 .choir-list {
-  padding: 80px 100px;
+  padding: 40px 40px;
   width: 100%;
 }
 
@@ -371,7 +372,7 @@ body {
   display: flex;
   align-items: center;
   gap: 24px;
-  padding-bottom: 40px;
+  padding: 40px 40px;
   flex-wrap: wrap;
 }
 
