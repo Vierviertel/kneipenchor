@@ -83,7 +83,7 @@ const geojson = {
       properties: {
         message: 'Pin 1',
         pinType: 1,
-        iconSize: [40, 40]
+        iconSize: [40, 52]
       },
       geometry: {
         type: 'Point',
@@ -95,7 +95,7 @@ const geojson = {
       properties: {
         message: 'Pin 2',
         pinType: 2,
-        iconSize: [40, 40]
+        iconSize: [40, 52]
       },
       geometry: {
         type: 'Point',
@@ -112,9 +112,9 @@ const geojson = {
 const pinImages = {
   1: 'pins/pin_01.png',
   2: 'pins/pin_02.png',
-  3: 'https://example.com/pin3.png',
-  4: 'https://example.com/pin4.png',
-  5: 'https://example.com/pin5.png'
+  3: 'pins/pin_03.png',
+  4: 'pins/pin_04.png',
+  5: 'pins/pin_05.png'
 };
 
 map.on('load', () => {
