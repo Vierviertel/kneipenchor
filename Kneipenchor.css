@@ -650,7 +650,6 @@ select {
   padding: 60px 100px 80px 100px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   flex-wrap: wrap; /* für mobile Fallback */
   gap: 40px;
 }
@@ -672,7 +671,6 @@ select {
 .footer-sections {
   display: flex;
   gap: 40px;
-  justify-content: flex-end;
   flex-wrap: wrap;
 }
 
@@ -680,21 +678,18 @@ select {
   flex: 1 1 200px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 220px; /* gleich hohe Boxen */
   text-align: left;
 }
 
 .section-title {
   font-size: 24px;
-  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .section-content {
   font-size: 14px;
   font-weight: normal;
   line-height: 1.5;
-  margin-top: auto;
 }
 
 .section-content strong {
