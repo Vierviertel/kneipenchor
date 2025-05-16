@@ -725,7 +725,7 @@ select {
   }
   .footer-section strong a {
   text-decoration: none;
-  color: inherit;
+  color: inherit !important;
   font-weight: bold;
 }
 }
