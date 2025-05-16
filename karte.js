@@ -1,42 +1,15 @@
-// Mapbox Access Token setzen
+// Mapbox Access Token
 mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrczl1ZjIxaGIzMyJ9.7GPJr4HzvulQJmMXY72CEA';
 
-// Initialize the map
+// Karte initialisieren
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/dark-v11',
-  center: [10.5, 51], // Germany
+  center: [10.5, 51], // Deutschland
   zoom: 5
 });
 
-// Example GeoJSON with a 'pinType' property
-const geojson = {
-  type: 'FeatureCollection',
-  features: [
-    {
-      type: 'Feature',
-      properties: {
-        name: 'Chor Berlin',
-        beschreibung: 'Ein Chor aus Berlin.',
-        bild: 'https://example.com/chor-berlin.jpg',
-        leitung: 'Frau Schmidt',
-        saenger: 30,
-        aufnahmestopp: false,
-        link: 'https://chor-berlin.de',
-        kontakt: 'info@chor-berlin.de',
-        pinType: 1,
-        iconSize: [40, 52]
-      },
-      geometry: {
-        type: 'Point',
-        coordinates: [13.4050, 52.52]
-      }
-    },
-    // ... weitere Features für andere Pins ...
-  ]
-};
-
-// Pin image URLs for each type
+// Pin-Bildpfade für jeden Typ
 const pinImages = {
   1: 'pins/pin_01.png',
   2: 'pins/pin_02.png',
@@ -45,23 +18,24 @@ const pinImages = {
   5: 'pins/pin_05.png'
 };
 
+// Wenn Karte geladen ist
 map.on('load', () => {
-  for (const feature of geojson.features) {
-    const el = document.createElement('div');
-    const width = feature.properties.iconSize[0];
-    const height = feature.properties.iconSize[1];
-    el.className = 'marker';
-    el.style.backgroundImage = `url(${pinImages[feature.properties.pinType]})`;
-    el.style.width = `${width}px`;
-    el.style.height = `${height}px`;
-    el.style.backgroundSize = '100%';
-    el.style.border = 'none';
-    el.style.borderRadius = '0';
-    el.style.cursor = 'pointer';
-    el.style.padding = 0;
-
-    // Create popup HTML
+  chorDaten.features.forEach((feature) => {
     const props = feature.properties;
+    const coordinates = feature.geometry.coordinates;
+    const pinType = props.pinType || 1; // Fallback auf Typ 1
+    const iconSize = props.iconSize || [40, 52];
+
+    // HTML-Element für Marker erzeugen
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.backgroundImage = `url(${pinImages[pinType]})`;
+    el.style.width = `${iconSize[0]}px`;
+    el.style.height = `${iconSize[1]}px`;
+    el.style.backgroundSize = '100%';
+    el.style.cursor = 'pointer';
+
+    // Popup-HTML
     const html = `
       <div class="chor-popup">
         <div class="chor-popup-facts">
@@ -88,13 +62,13 @@ map.on('load', () => {
       </div>
     `;
 
+    // Popup erzeugen
     const popup = new mapboxgl.Popup({ maxWidth: "360px" }).setHTML(html);
 
+    // Marker mit Popup hinzufügen
     new mapboxgl.Marker(el)
-      .setLngLat(feature.geometry.coordinates)
+      .setLngLat(coordinates)
       .setPopup(popup)
       .addTo(map);
-  }
+  });
 });
-
-// Optional: Change cursor on marker hover (handled by default for HTML markers)
