@@ -596,9 +596,9 @@ select {
   margin-bottom: 24px;
 }
 
-.form-label {
+.contact-form label {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 700; /* falls gewünscht */
   display: block;
   margin-bottom: 4px;
 }
