@@ -179,7 +179,7 @@ body {
   .hamburger.active .bar:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
   }
-}
+
 
 
 /* ---------------------------------------- */
