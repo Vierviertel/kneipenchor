@@ -18,49 +18,50 @@ const pinImages = {
   5: 'pins/pin_05.png'
 };
 
-// Wenn Karte geladen ist
 map.on('load', () => {
   chorDaten.features.forEach((feature) => {
-    const props = feature.properties;
-    const coords = feature.geometry.coordinates;
-    const pinType = props.pinType || 1;
-    const iconSize = props.iconSize || [40, 52];
-    const randomPinType = Math.floor(Math.random() * 5) + 1; // 1 bis 5
-    feature.properties.pinType = randomPinType;
+    const props = feature.properties || {};
+    const coords = feature.geometry?.coordinates || [0, 0];
+
+    // Zufälligen Pin-Typ vergeben (1–5)
+    const randomPinType = Math.floor(Math.random() * 5) + 1;
+
+    // Standardgröße für Pins
+    const iconSize = [40, 52];
 
     // Marker-Element erstellen
     const el = document.createElement('div');
     el.className = 'marker';
-    el.style.backgroundImage = `url(${pinImages[feature.properties.pinType]})`;
+    el.style.backgroundImage = `url(${pinImages[randomPinType]})`;
     el.style.width = `${iconSize[0]}px`;
     el.style.height = `${iconSize[1]}px`;
     el.style.backgroundSize = '100%';
     el.style.cursor = 'pointer';
 
-    // Popup-HTML
+    // Popup-HTML erzeugen (nur wenn notwendige Daten vorhanden)
     const html = `
       <div class="chor-popup">
         <div class="chor-popup-facts">
-          <img class="chor-popup-img" src="${props.bild}" alt="${props.name}">
+          <img class="chor-popup-img" src="${props.bild || ''}" alt="${props.name || ''}">
           <div class="chor-popup-text">
-            <div class="chor-popup-title">${props.name}</div>
-            <div class="chor-popup-desc">${props.beschreibung}</div>
+            <div class="chor-popup-title">${props.name || ''}</div>
+            <div class="chor-popup-desc">${props.beschreibung || ''}</div>
           </div>
         </div>
         <hr class="chor-popup-line">
-        <div class="chor-popup-leitung">Leitung: ${props.leitung}</div>
+        <div class="chor-popup-leitung">Leitung: ${props.leitung || ''}</div>
         <div class="chor-popup-stats">
           <div>
             <div class="label">Sänger:innen</div>
-            <div class="value">${props.saenger}</div>
+            <div class="value">${props.saenger || ''}</div>
           </div>
           <div>
             <div class="label">Aufnahmestopp</div>
             <div class="value">${props.aufnahmestopp ? "Ja" : "Nein"}</div>
           </div>
         </div>
-        <a class="chor-popup-btn" href="${props.link}" target="_blank">Zur Website</a>
-        <div class="chor-popup-kontakt">Kontakt: <a href="mailto:${props.kontakt}">${props.kontakt}</a></div>
+        <a class="chor-popup-btn" href="${props.link || '#'}" target="_blank">Zur Website</a>
+        <div class="chor-popup-kontakt">Kontakt: <a href="mailto:${props.kontakt || ''}">${props.kontakt || ''}</a></div>
       </div>
     `;
 
