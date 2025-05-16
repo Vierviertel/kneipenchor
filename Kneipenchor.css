@@ -647,6 +647,8 @@ select {
   background-color: var(--color-yellow);
   color: var(--color-black);
   width: 100%;
+  overflow-x: hidden; /* verhindert horizontales Scrollen */
+  box-sizing: border-box;
   padding: 60px 100px 80px 100px;
   display: flex;
   justify-content: space-between;
@@ -670,6 +672,7 @@ select {
 
 .footer-sections {
   display: flex;
+  max-width: 100%;
   gap: 40px;
   flex-wrap: wrap;
   justify-content: flex-end; /* optional – richtet alle Sections nach rechts aus */
