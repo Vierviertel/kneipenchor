@@ -111,7 +111,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 999;
+  z-index: 1100;
   vertical-align: middle;  /* Falls im Inline-Kontext */
 }
 .hamburger .bar {
@@ -325,7 +325,7 @@ body {
 
 .mapboxgl-popup {
   position: fixed !important; /* oder absolute */
-  z-index: 99999 !important;
+  z-index: 9999 !important;
   pointer-events: auto;
 }
 
