@@ -464,7 +464,6 @@ select {
 .choir-image {
   flex-shrink: 1; /* Bild darf auch schrumpfen */
   min-width: 100px; /* aber nicht kleiner als 100px */
-  max-width: 300px;
   object-fit: cover; /* Bild füllt Fläche aus, ohne Verzerrung */
   aspect-ratio: 1.88;
   width: 100%;
