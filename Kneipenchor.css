@@ -234,11 +234,7 @@ body {
 
 .map-marker, .mapboxgl-marker {
   position: absolute;
-  top: -24px !important;
-}
-.marker {
-  display: block;
-  padding: 0; /* No border-radius, no circle */
+  top: -30px !important;
 }
 
 /*---------------------------------------- */
