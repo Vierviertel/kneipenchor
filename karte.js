@@ -5,11 +5,11 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidmllcnZpZXJ0ZWwiLCJhIjoiY21hbnN4c3V5MDJkeDJrc
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/dark-v11',
-  center: [10.5, 51], // Deutschland
+  center: [10.5, 51], // Deutschland-Zentrum
   zoom: 5
 });
 
-// Pin-Bildpfade für jeden Typ
+// Pin-Bilder pro Typ
 const pinImages = {
   1: 'pins/pin_01.png',
   2: 'pins/pin_02.png',
@@ -22,11 +22,11 @@ const pinImages = {
 map.on('load', () => {
   chorDaten.features.forEach((feature) => {
     const props = feature.properties;
-    const coordinates = feature.geometry.coordinates;
-    const pinType = props.pinType || 1; // Fallback auf Typ 1
+    const coords = feature.geometry.coordinates;
+    const pinType = props.pinType || 1;
     const iconSize = props.iconSize || [40, 52];
 
-    // HTML-Element für Marker erzeugen
+    // Marker-Element erstellen
     const el = document.createElement('div');
     el.className = 'marker';
     el.style.backgroundImage = `url(${pinImages[pinType]})`;
@@ -62,12 +62,10 @@ map.on('load', () => {
       </div>
     `;
 
-    // Popup erzeugen
     const popup = new mapboxgl.Popup({ maxWidth: "360px" }).setHTML(html);
 
-    // Marker mit Popup hinzufügen
     new mapboxgl.Marker(el)
-      .setLngLat(coordinates)
+      .setLngLat(coords)
       .setPopup(popup)
       .addTo(map);
   });
