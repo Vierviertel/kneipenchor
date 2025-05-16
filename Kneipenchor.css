@@ -160,7 +160,7 @@ body {
 
  .main-nav {
     top: 0;
-    right: 0px;         /* Menü außerhalb rechts (Annahme: Breite 300px) */
+    right: -300px;         /* Menü außerhalb rechts (Annahme: Breite 300px) */
     display: none;
     flex-direction: column;
     gap: 16px;
