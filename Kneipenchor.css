@@ -525,8 +525,8 @@ select {
 
 .contact-info {
   display: flex;
-  align-items: center;
   gap: 24px;
+  flex-direction: column;
 }
 
 .contact-text {
