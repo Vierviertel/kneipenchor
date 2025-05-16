@@ -713,10 +713,12 @@ select {
 
   .footer-sections {
     flex-direction: column;
+    align-items: flex-start;
     gap: 24px;
   }
 
   .footer-section {
-    flex: none;
+    width: 100%; /* bei schmalem Screen wieder auf volle Breite */
+    max-width: none;
   }
 }
