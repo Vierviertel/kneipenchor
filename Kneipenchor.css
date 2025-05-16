@@ -145,7 +145,7 @@ body {
     position: relative; /* notwendig, damit z-index wirkt */
   }
   .main-header {
-    padding-left: 24px;
+    padding-left: 16px;
   }
   .main-nav {
     display: none; /* standard versteckt */
