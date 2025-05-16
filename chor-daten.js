@@ -56,8 +56,7 @@ const chorDaten = {
         name: "Kneipenchor Karlsruhe",
         stadt: "Karlsruhe",
         bundesland: "Baden-Württemberg",
-        beschreibung: "Singen, feiern, Gänsehaut – seit 2012 bringt der Karlsruher Kneipenchor Musik und Menschen zusammen.
-Was einst mit ein paar sangesfreudigen Leuten in der Bento Bar begann, ist heute eine große, bunte Gemeinschaft von durchaus 200 Sänger*innen.",
+        beschreibung: "Singen, feiern, Gänsehaut – seit 2012 bringt der Karlsruher Kneipenchor Musik und Menschen zusammen. Was einst mit ein paar sangesfreudigen Leuten in der Bento Bar begann, ist heute eine große, bunte Gemeinschaft von durchaus 200 Sänger*innen.",
         leitung: "Jimmy Röck",
         saenger: 200,
         genres: ["Pop", "Rock"],
@@ -93,7 +92,7 @@ Was einst mit ein paar sangesfreudigen Leuten in der Bento Bar begann, ist heute
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [49.487768, 4662297] // Mannheim
+        coordinates: [11.5761, 48.1374] // Mannheim
       },
       properties: {
         name: "Mannheimer Kneipenchor",
