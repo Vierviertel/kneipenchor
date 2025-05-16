@@ -36,6 +36,12 @@ body {
   background-color: var(--color-light-bg);
   font-family: var(--font-alt);
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 
 /* ---------------------------------------- */
 /* ========== 2. Header =================== */
@@ -448,9 +454,19 @@ select {
   box-shadow: 0 0 8px rgba(0,0,0,0.1); /* optional Schatten */
 }
 
+.choir-card,
+.choir-info,
+.choir-details {
+  overflow-wrap: break-word;  /* lange Wörter umbrechen */
+  word-wrap: break-word;
+  hyphens: auto;              /* optionale Silbentrennung */
+}
+
+
 .choir-image {
-  flex-shrink: 0;
-  width: 200px;            /* fixe Bildbreite */
+  flex-shrink: 1; /* Bild darf auch schrumpfen */
+  min-width: 100px; /* aber nicht kleiner als 100px */
+  max-width: 200px;
   height: auto;
   object-fit: cover;
   aspekt-ratio: 1.88;
