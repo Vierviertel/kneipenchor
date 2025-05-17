@@ -162,6 +162,7 @@ body {
   }
   .main-nav.open {
     display: flex;
+    height: 100%;
   }
   .nav-list {
     flex-direction: column;
@@ -169,7 +170,7 @@ body {
   }
   .register-btn {
     align-self: stretch;
-    margin-top: auto;
+    margin-top: 48px;
   }
 }
   
