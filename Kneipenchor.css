@@ -67,7 +67,6 @@ body {
   align-items: center;
   gap: var(--gap-md);
   font-size: var(--font-size-sm);
-  line-height: 24px;
   font-weight: var(--font-weight-normal);
 }
 
