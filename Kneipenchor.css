@@ -167,6 +167,8 @@ body {
   }
   .nav-list {
     flex-direction: column;
+    align-items: flex-start
+    padding-left: 24px;
     gap: 16px;
   }
   .register-btn {
