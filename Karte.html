@@ -195,19 +195,33 @@
   <script src="karte.js"></script>
   <script src="liste-filter.js"></script>
   
-<!-- Hamburger Script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const mainNav = document.querySelector('.main-nav');
 
-    hamburger.addEventListener('click', () => {
+    // Öffnen / Schließen bei Klick auf Hamburger
+    hamburger.addEventListener('click', (event) => {
+      event.stopPropagation(); // Verhindert Schließen bei eigenem Klick
       const isOpen = mainNav.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       hamburger.classList.toggle('active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Schließen bei Klick außerhalb des Menüs
+    document.addEventListener('click', (event) => {
+      const isOpen = mainNav.classList.contains('open');
+      if (isOpen && !mainNav.contains(event.target) && !hamburger.contains(event.target)) {
+        mainNav.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
     });
   });
 </script>
+
 
   
 
