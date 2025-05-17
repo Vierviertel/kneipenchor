@@ -51,7 +51,6 @@ body {
   padding: 0 var(--gap-xl);
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: var(--gap-lg) var(--gap-xl);
 }
 
