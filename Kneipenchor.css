@@ -281,7 +281,7 @@ body {
   max-width: 1204px;
 }
 
-.map-overlay {
+/*.map-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -289,7 +289,7 @@ body {
   height: 100%;
   pointer-events: none; /* Verhindert, dass das Overlay die Interaktivität der Karte blockiert */
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
-}
+}*/
 
 .mapboxgl-popup {
   position: fixed !important; /* oder absolute */
@@ -303,20 +303,6 @@ body {
     overflow: inherit !important;
 }
 
-.map-decoration-1, .map-decoration-2 {
-  position: absolute;
-  width: 81px;
-}
-
-.map-decoration-1 {
-  right: 476px;
-  top: 189px;
-}
-
-.map-decoration-2 {
-  left: 612px;
-  bottom: 131px;
-}
 
 .map-marker, .mapboxgl-marker {
   position: absolute;
