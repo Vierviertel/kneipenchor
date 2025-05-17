@@ -236,6 +236,12 @@ body {
   margin: 28px 0;
 }
 
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 20px 60px 20px;
+  }
+}
+
 
 /* ---------------------------------------- */
 /* ========== 4. Map Section ============== */
@@ -889,6 +895,12 @@ select {
   letter-spacing: 2.1px;
   border: none;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .forum-section {
+    padding: 40px 20px 60px 20px;
+  }
 }
 
 /* ---------------------------------------- */
