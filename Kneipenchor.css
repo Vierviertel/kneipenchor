@@ -164,7 +164,7 @@ body {
   .main-nav.open {
     display: flex;
     height: 100%;
-    align-items: left;
+    align-items: start;
   }
   .nav-list {
     flex-direction: column;
