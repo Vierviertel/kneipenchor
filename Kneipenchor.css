@@ -199,14 +199,8 @@ body {
 }
 
 .hero-img {
-  aspect-ratio: 1.22;
   object-fit: contain;
   width: 100%;
-  max-width: 647px;
-}
-
-.hero-content {
-  max-width: 416px;
 }
 
 .hero-subtitle, .hero-description {
