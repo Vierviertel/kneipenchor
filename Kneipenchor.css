@@ -74,9 +74,9 @@ body {
 .nav-list {
   display: flex;
   list-style: none;
-  margin: 0;
+  margin: 80px;
   padding: 0;
-  gap: var(--gap-md);
+  gap: 24px;
 }
 
 .nav-link {
