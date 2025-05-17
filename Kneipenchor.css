@@ -87,6 +87,7 @@ body {
 
 .cta-button, .register-btn {
   border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
   text-decoration: none;
   background-color: var(--color-black);
   color: var(--color-white);
