@@ -62,50 +62,59 @@
   </section>
 
   <section class="contact-section">
-    <div class="contact-content">
-      <h2 class="contact-title">Chor auf die Karte?<br />Einfach melden!</h2>
+  <div class="contact-content">
+    <div class="contact-info">
+      <h2 class="contact-title">
+        Chor auf die Karte?<br>
+        Einfach melden!
+      </h2>
       <p class="contact-description">
-        Gemeinsam klingen wir weiter - tragt euren Chor ein und werdet Teil<br />
-        der Kneipenchor-Community, die Musik und Miteinander liebt.<br /><br />
-        Ihr habt Feedback oder braucht Hilfe beim Eintragen?<br />
-        Meldet euch gerne: <strong>kontakt@kneipenchor.net</strong>
+        Gemeinsam klingen wir weiter - tragt euren Chor ein und werdet Teil<br>
+        der Kneipenchor-Community, die Musik und Miteinander liebt.<br><br>
+        Ihr habt Feedback oder braucht Hilfe beim Eintragen?<br>
+        Meldet euch gerne: <strong><a href="mailto:kontakt@kneipenchor.net">kontakt@kneipenchor.net</a></strong>
       </p>
     </div>
+    <form class="contact-form" action="https://formsubmit.co/info@karlsruherkneipenchor.de" method="POST">
+  <!-- Formsubmit Hidden Fields -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://deine-seite.de/danke.html">
+  <input type="hidden" name="_subject" value="Neue Nachricht vom Kneipenchor-Formular">
+  <input type="text" name="_honey" style="display:none">
 
-    <form class="contact-form">
-      <div class="form-group">
-        <label class="form-label"
-          >Name <span class="required">(erforderlich)</span></label
-        >
-        <div class="name-inputs">
-          <div class="input-group">
-            <label for="firstname">Vorname</label>
-            <input type="text" id="firstname" class="form-input" />
-          </div>
-          <div class="input-group">
-            <label for="lastname">Nachname</label>
-            <input type="text" id="lastname" class="form-input" />
-          </div>
-        </div>
+  <!-- Vor- & Nachname -->
+  <div class="form-group">
+    <label>Name <span class="required">(erforderlich)</span></label>
+    <div class="name-inputs">
+      <div class="input-group">
+        <label for="firstname">Vorname</label>
+        <input type="text" id="firstname" name="Vorname" class="form-input" required />
       </div>
-
-      <div class="form-group">
-        <label class="form-label"
-          >E-Mail-Adresse <span class="required">(erforderlich)</span></label
-        >
-        <input type="email" class="form-input" />
+      <div class="input-group">
+        <label for="lastname">Nachname</label>
+        <input type="text" id="lastname" name="Nachname" class="form-input" required />
       </div>
+    </div>
+  </div>
 
-      <div class="form-group">
-        <label class="form-label"
-          >Nachricht <span class="required">(erforderlich)</span></label
-        >
-        <textarea class="form-textarea"></textarea>
-      </div>
+  <!-- E-Mail -->
+  <div class="form-group">
+    <label for="email">E-Mail-Adresse <span class="required">(erforderlich)</span></label>
+    <input type="email" id="email" name="Email" class="form-input" required />
+  </div>
 
-      <button type="submit" class="submit-button">senden</button>
-    </form>
-  </section>
+  <!-- Nachricht -->
+  <div class="form-group">
+    <label for="message">Nachricht <span class="required">(erforderlich)</span></label>
+    <textarea id="message" name="Nachricht" class="form-input" required style="min-height: 88px;"></textarea>
+  </div>
+
+  <!-- Absenden -->
+  <button type="submit" class="submit-button">senden</button>
+</form>
+
+  </div>
+</section>
 
   <section class="forum-section" id="forum">
     <div class="forum-image">
