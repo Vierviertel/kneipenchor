@@ -36,6 +36,9 @@ body {
   background-color: var(--color-light-bg);
   font-family: var(--font-alt);
 }
+.break {
+  display: block;
+}
 
 
 
