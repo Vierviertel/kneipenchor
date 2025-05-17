@@ -111,6 +111,7 @@ body {
   cursor: pointer;
   z-index: 1100;
   vertical-align: middle;  /* Falls im Inline-Kontext */
+  line-height: 1;
 }
 .hamburger .bar {
   display: inline-block;
@@ -119,6 +120,7 @@ body {
   background-color: #000;
   border-radius: 2px;
   margin: 4px 0;
+  line-height: 1;
 }
 
 /* Desktop: Navigation immer sichtbar */
@@ -134,6 +136,7 @@ body {
   }
   .hamburger {
     display: none;
+    line-height: 1;
   }
 }
 
@@ -142,6 +145,7 @@ body {
   .hamburger {
     display: block; /* sichtbar */
     position: relative; /* notwendig, damit z-index wirkt */
+    line-height: 1;
   }
   .main-header {
     padding-left: 16px;
@@ -158,10 +162,12 @@ body {
     padding: 16px;
     width: 200px; /* nach Wunsch anpassen */
     z-index: 2000;
+    line-height: 1;
   }
   .main-nav.open {
     display: flex;
     height: 100%;
+    line-height: 1;
   }
   .nav-list {
     flex-direction: column;
