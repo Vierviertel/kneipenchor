@@ -191,16 +191,25 @@ body {
   align-items: center;
   gap: var(--gap-lg) 64px;
   flex-wrap: wrap;
+  max-height: 500px; /* dein gewünschter Wert */
+  overflow: hidden; /* verhindert, dass Kinder die Höhe sprengen */
+  position: relative; /* wichtig für ggf. positionierte Inhalte */
 }
 
 .hero-image, .hero-content {
   flex: 1;
   min-width: 240px;
+  
 }
 
 .hero-img {
   object-fit: contain;
   width: 100%;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover; /* oder contain, je nach Effekt */
+  display: block;
 }
 
 .hero-subtitle, .hero-description {
