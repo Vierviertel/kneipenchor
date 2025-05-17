@@ -232,6 +232,7 @@ body {
   margin: 28px 0;
 }
 
+
 /* ---------------------------------------- */
 /* ========== 4. Map Section ============== */
 /* ---------------------------------------- */
@@ -269,6 +270,9 @@ body {
 }
 
 .map-title {
+  text-align: center;
+  margin: 0 auto 1rem auto; /* oben/seitlich/unten zentriert */
+  max-width: 800px; /* optional: verhindert zu lange Zeilen */
   color: var(--color-dark-text);
   font-size: var(--font-size-xl);
   font-family: var(--font-main);
