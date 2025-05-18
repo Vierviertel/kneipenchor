@@ -1032,5 +1032,8 @@ iframe[src*="docs.google.com/forms"] {
   margin: 2rem auto;
   padding: 1.5rem;
 }
+.form-intro li {
+  margin-bottom: 16px;
+}
 
 
