@@ -18,6 +18,22 @@
   <link rel="stylesheet" href="Kneipenchor.css" />
 
   <style>
+    .filter-controls {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    .event-list {
+      display: grid;
+      gap: 1rem;
+    }
+    .event-item {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 1rem;
+      background: #fafafa;
+    }
     #calendar {
       max-width: 1000px;
       margin: 2rem auto;
@@ -63,7 +79,20 @@
 <!-- MAIN -->
 <main>
   <section class="calendar-section">
-    <h2 style="text-align: center;">🎶 Konzertkalender der Kneipenchöre</h2>
+    <h2 style="text-align: center;">Konzertkalender der Kneipenchöre</h2>
+     <div class="filter-controls">
+    <select id="month-filter">
+      <option value="">Monat wählen</option>
+    </select>
+    <select id="chor-filter">
+      <option value="">Chor wählen</option>
+    </select>
+    <select id="ort-filter">
+      <option value="">Ort wählen</option>
+    </select>
+  </div>
+
+  <div id="events" class="event-list"></div>
     <div id="calendar"></div>
   </section>
 </main>
@@ -105,48 +134,96 @@
 </footer>
 
 <!-- Kalender-Skript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRkJDBs--vb6-T67ihZI5jkGclOu50Tsd5YtGvodoWXWEW34LR3TsJJ8nNj_PxsFxusXt5kq6uk_RTh/pub?output=csv';
+  const sheetID = "2PACX-1vRkJDBs--vb6-T67ihZI5jkGclOu50Tsd5YtGvodoWXWEW34LR3TsJJ8nNj_PxsFxusXt5kq6uk_RTh";
+  const sheetURL = `https://docs.google.com/spreadsheets/d/e/${sheetID}/pub?output=csv`;
 
-    Papa.parse(csvUrl, {
-      download: true,
-      header: true,
-      complete: function (results) {
-        const events = results.data.map(row => ({
-          title: `${row.Chor} – ${row.Titel}`,
-          start: row.Datum,
-          extendedProps: {
-            ort: row.Ort,
-            uhrzeit: row.Uhrzeit,
-            adresse: row.Adresse,
-            link: row.Link,
-            kommentar: row.Kommentar
-          }
-        }));
+  const filters = {
+    Monat: document.getElementById("month-filter"),
+    Chor: document.getElementById("chor-filter"),
+    Ort: document.getElementById("ort-filter"),
+  };
 
-        const calendarEl = document.getElementById('calendar');
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth',
-          locale: 'de',
-          headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,listMonth'
-          },
-          events: events,
-          eventClick: function (info) {
-            const props = info.event.extendedProps;
-            alert(
-              `${info.event.title}\n\nOrt: ${props.ort}\nUhrzeit: ${props.uhrzeit}\nAdresse: ${props.adresse}\n\n${props.kommentar || ''}`
-            );
-          }
-        });
+  const eventContainer = document.getElementById("events");
+  let alleEvents = [];
 
-        calendar.render();
-      }
+  function formatMonat(dateStr) {
+    const [jahr, monat] = dateStr.split("-"); // YYYY-MM-DD
+    return `${jahr}-${monat}`;
+  }
+
+  function populateDropdowns(events) {
+    const monate = new Set();
+    const orte = new Set();
+    const chöre = new Set();
+
+    events.forEach(ev => {
+      monate.add(formatMonat(ev.Datum));
+      orte.add(ev.Ort);
+      chöre.add(ev.Chorname);
     });
+
+    addOptions(filters.Monat, [...monate].sort());
+    addOptions(filters.Ort, [...orte].sort());
+    addOptions(filters.Chor, [...chöre].sort());
+  }
+
+  function addOptions(select, options) {
+    options.forEach(opt => {
+      const o = document.createElement("option");
+      o.value = opt;
+      o.textContent = opt;
+      select.appendChild(o);
+    });
+  }
+
+  function filterAndRender() {
+    const selectedMonat = filters.Monat.value;
+    const selectedOrt = filters.Ort.value;
+    const selectedChor = filters.Chor.value;
+
+    const gefiltert = alleEvents.filter(ev => {
+      const matchMonat = !selectedMonat || formatMonat(ev.Datum) === selectedMonat;
+      const matchOrt = !selectedOrt || ev.Ort === selectedOrt;
+      const matchChor = !selectedChor || ev.Chorname === selectedChor;
+      return matchMonat && matchOrt && matchChor;
+    });
+
+    renderEvents(gefiltert);
+  }
+
+  function renderEvents(events) {
+    eventContainer.innerHTML = "";
+    if (events.length === 0) {
+      eventContainer.innerHTML = "<p>Keine Einträge gefunden.</p>";
+      return;
+    }
+
+    events.forEach(ev => {
+      const el = document.createElement("div");
+      el.className = "event-item";
+      el.innerHTML = `
+        <strong>${ev.Eventtitel}</strong><br>
+        <em>${ev.Datum} ${ev.Uhrzeit} — ${ev.Ort}</em><br>
+        Chor: ${ev.Chorname}<br>
+        ${ev.Beschreibung}
+      `;
+      eventContainer.appendChild(el);
+    });
+  }
+
+  Papa.parse(sheetURL, {
+    download: true,
+    header: true,
+    complete: function(results) {
+      alleEvents = results.data.filter(row => row.Datum);
+      populateDropdowns(alleEvents);
+      renderEvents(alleEvents);
+    }
   });
+
+  Object.values(filters).forEach(f => f.addEventListener("change", filterAndRender));
 </script>
 
 <!-- Hamburger Script -->
