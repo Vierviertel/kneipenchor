@@ -204,11 +204,13 @@
       const el = document.createElement("div");
       el.className = "event-item";
       el.innerHTML = `
-        <strong>${ev.Eventtitel}</strong><br>
-        <em>${ev.Datum} ${ev.Uhrzeit} — ${ev.Ort}</em><br>
-        Chor: ${ev.Chorname}<br>
-        ${ev.Beschreibung}
-      `;
+  <strong>${ev.Eventtitel}</strong><br>
+  <em>${ev.Datum} ${ev.Uhrzeit} — ${ev.Ort}</em><br>
+  Chor: ${ev.Chorname}<br>
+  ${ev.Beschreibung}<br>
+  ${ev.Link ? `<a href="${ev.Link}" target="_blank" rel="noopener noreferrer">Mehr Infos</a>` : ""}
+`;
+
       eventContainer.appendChild(el);
     });
   }
