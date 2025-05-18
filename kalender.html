@@ -3,49 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kneipenchor Kalender</title>
+  <title>Konzertkalender</title>
+
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css" rel="stylesheet">
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+
+  <!-- PapaParse: CSV einlesen -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+
+  <!-- Dein Stylesheet -->
   <link rel="stylesheet" href="Kneipenchor.css" />
+
+  <style>
+    #calendar {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .fc-toolbar-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    body {
+      background: var(--bg-color);
+    }
+  </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="main-header">
-   <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" type="button">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</button>
+  <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" type="button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
 
-  
   <h1 class="site-title">Kneipenchöre vernetzt</h1>
- 
   <nav class="main-nav">
     <ul class="nav-list">
       <li><a href="index.html" class="nav-link">Startseite</a></li>
       <li><a href="Karte.html" class="nav-link">Kneipenchor-Map</a></li>
       <li><a href="index.html#veranstaltungen" class="nav-link">Veranstaltungen</a></li>
       <li><a href="index.html#forum" class="nav-link">Forum</a></li>
+      <li><a href="kalender.html" class="nav-link">Kalender</a></li>
     </ul>
     <a href="eintragen.html" class="register-btn">chor eintragen</a>
   </nav>
 </header>
 
-  <main>
-    <section class="calendar-section">
-      <h2 class="calendar-title">Veranstaltungskalender</h2>
-      <div class="calendar-wrapper">
-        <!-- Hier wird Google Sheets eingebunden -->
-        <iframe 
-          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRkJDBs--vb6-T67ihZI5jkGclOu50Tsd5YtGvodoWXWEW34LR3TsJJ8nNj_PxsFxusXt5kq6uk_RTh/pubhtml?widget=true&amp;headers=false" 
-          class="calendar-iframe"
-          width="100%" 
-          height="600" 
-          frameborder="0">
-        </iframe>
-      </div>
-    </section>
-  </main>
+<!-- MAIN -->
+<main>
+  <section class="calendar-section">
+    <h2 style="text-align: center;">🎶 Konzertkalender der Kneipenchöre</h2>
+    <div id="calendar"></div>
+  </section>
+</main>
 
-  <footer class="main-footer">
+<!-- FOOTER -->
+<footer class="main-footer">
   <div class="footer-brand">
     <h2 class="footer-title">Kneipenchöre<br>vernetzt</h2>
   </div>
@@ -55,7 +79,7 @@
         <h3 class="section-title">Festival</h3>
         <p class="section-content">
           Hier gibt es alle Infos zum jährlich statt findenden Kneipenchor-Festival:<br>
-            <a href="https://karlsruherkneipenchor.de/festival/" target="_blank" rel="noopener noreferrer">www.karlsruherkneipenchor.de</a>
+          <a href="https://karlsruherkneipenchor.de/festival/" target="_blank">www.karlsruherkneipenchor.de</a>
         </p>
       </section>
       <section class="footer-section">
@@ -65,7 +89,7 @@
           c/o Kulturzentrum Tollhaus<br>
           Alter Schlachthof 35<br>
           76131 Karlsruhe<br>
-           <a href="mailto:info@karlsruherkneipenchor.de">kontakt@kneipenchor.net</a>
+          <a href="mailto:kontakt@kneipenchor.net">kontakt@kneipenchor.net</a>
         </p>
       </section>
       <section class="footer-section">
@@ -80,29 +104,61 @@
   </nav>
 </footer>
 
-  <script>
+<!-- Kalender-Skript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRkJDBs--vb6-T67ihZI5jkGclOu50Tsd5YtGvodoWXWEW34LR3TsJJ8nNj_PxsFxusXt5kq6uk_RTh/pub?output=csv';
+
+    Papa.parse(csvUrl, {
+      download: true,
+      header: true,
+      complete: function (results) {
+        const events = results.data.map(row => ({
+          title: `${row.Chor} – ${row.Titel}`,
+          start: row.Datum,
+          extendedProps: {
+            ort: row.Ort,
+            uhrzeit: row.Uhrzeit,
+            adresse: row.Adresse,
+            link: row.Link,
+            kommentar: row.Kommentar
+          }
+        }));
+
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          locale: 'de',
+          headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,listMonth'
+          },
+          events: events,
+          eventClick: function (info) {
+            const props = info.event.extendedProps;
+            alert(
+              `${info.event.title}\n\nOrt: ${props.ort}\nUhrzeit: ${props.uhrzeit}\nAdresse: ${props.adresse}\n\n${props.kommentar || ''}`
+            );
+          }
+        });
+
+        calendar.render();
+      }
+    });
+  });
+</script>
+
+<!-- Hamburger Script -->
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const mainNav = document.querySelector('.main-nav');
 
-    // Öffnen / Schließen bei Klick auf Hamburger
-    hamburger.addEventListener('click', (event) => {
-      event.stopPropagation(); // Verhindert Schließen bei eigenem Klick
+    hamburger.addEventListener('click', () => {
       const isOpen = mainNav.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       hamburger.classList.toggle('active', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-
-    // Schließen bei Klick außerhalb des Menüs
-    document.addEventListener('click', (event) => {
-      const isOpen = mainNav.classList.contains('open');
-      if (isOpen && !mainNav.contains(event.target) && !hamburger.contains(event.target)) {
-        mainNav.classList.remove('open');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
     });
   });
 </script>
