@@ -988,3 +988,34 @@ select {
   }
   
 }
+
+/* ---------------------------------------- */
+/* ========== 10. Kalender ================ */
+/* ---------------------------------------- */
+
+.calendar-section {
+  padding: 4rem 2rem;
+  background-color: #fdfdfd;
+  text-align: center;
+}
+
+.calendar-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-color); /* passe ggf. deine Farbvariablen an */
+}
+
+.calendar-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.calendar-iframe {
+  width: 100%;
+  min-height: 600px;
+  border: none;
+}
+
