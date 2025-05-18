@@ -1,28 +1,161 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kneipenchöre Vernetzt – Chor eintragen</title>
-  <link rel="stylesheet" href="Kneipenchor.css">
+  <link rel="stylesheet" href="Kneipenchor.css" />
 </head>
 <body>
-  <h1>Chor eintragen</h1>
+
+<header class="main-header">
+   <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" type="button">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+
+  
+  <h1 class="site-title">Kneipenchöre vernetzt</h1>
+ 
+  <nav class="main-nav">
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Startseite</a></li>
+      <li><a href="Karte.html" class="nav-link">Kneipenchor-Map</a></li>
+      <li><a href="kalender.html" class="nav-link">Kalender</a></li>
+      <li><a href="index.html#forum" class="nav-link">Forum</a></li>
+    </ul>
+    <a href="eintragen.html" class="register-btn">chor eintragen</a>
+  </nav>
+</header>
+
+  <main class="form-page">
+    <section class="form-intro">
+  <h1>Chor auf Karte eintragen</h1>
+  <p>Bitte tragt euren Chor sorgfältig ein. Wichtig:</p>
+  <ul>
+    <li>Verwendet <strong>das Passwort</strong>, das ihr per Mail bekommen habt.</li>
+    <li>Chorname muss identisch zur Karte sein.</li>
+    <li>Latitude / Longitude könnt ihr mit <a href="https://www.latlong.net/" target="_blank">latlong.net</a> ermitteln.</li>
+  </ul>
+</section>
+
+<section class="form-container">
   <form action="https://formsubmit.co/mail@anna-kalus.de" method="POST">
+    <!-- Formsubmit Konfiguration -->
     <input type="hidden" name="_subject" value="Neuer Chor-Eintrag von der Karte!">
     <input type="hidden" name="_captcha" value="false">
-    <input type="text" name="name" placeholder="Chorname" required><br>
-    <input type="text" name="leitung" placeholder="Chorleitung" required><br>
-    <input type="number" name="sänger" placeholder="Anzahl SängerInnen" required><br>
-    <input type="text" name="konzert" placeholder="Nächstes Konzert (Datum)" required><br>
-    <input type="text" name="stopp" placeholder="Aufnahmestopp? (ja/nein)" required><br>
-    <input type="url" name="website" placeholder="Website"><br>
-    <input type="email" name="kontakt" placeholder="Kontakt-E-Mail" required><br>
-    <input type="url" name="logo" placeholder="Logo-Bild-URL"><br>
-    <input type="text" name="beschreibung" placeholder="Kurzbeschreibung"><br>
-    <input type="text" name="longitude" placeholder="Längengrad" required><br>
-    <input type="text" name="latitude" placeholder="Breitengrad" required><br>
-    <input type="password" name="passwort" placeholder="Zugangspasswort" required><br>
+    <input type="hidden" name="_template" value="table">
+
+    <!-- Eingabefelder -->
+    <input type="text" name="name" placeholder="Chorname" required>
+    <input type="text" name="leitung" placeholder="Chorleitung" required>
+    <input type="number" name="sänger" placeholder="Anzahl SängerInnen" required>
+    <input type="text" name="konzert" placeholder="Nächstes Konzert (TT.MM.JJJJ)" required>
+    <input type="text" name="stopp" placeholder="Aufnahmestopp? (ja/nein)" required>
+    <input type="url" name="website" placeholder="Website">
+    <input type="email" name="kontakt" placeholder="Kontakt-E-Mail" required>
+    <input type="url" name="logo" placeholder="Logo-Bild-URL">
+    <input type="text" name="beschreibung" placeholder="Kurzbeschreibung">
+    <input type="text" name="longitude" placeholder="Längengrad" required>
+    <input type="text" name="latitude" placeholder="Breitengrad" required>
+    <input type="password" name="passwort" placeholder="Zugangspasswort" required>
+
+    <!-- Submit -->
     <button type="submit">Chor eintragen</button>
   </form>
+</section>
+
+    <section class="form-container">
+  <form action="https://formsubmit.co/mail@anna-kalus.de" method="POST">
+    <!-- Formsubmit Konfiguration -->
+    <input type="hidden" name="_subject" value="Neuer Chor-Eintrag von der Karte!">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://kneipenchor.de/danke.html">
+
+    <!-- Eingabefelder -->
+    <input type="text" name="name" placeholder="Chorname" required>
+    <input type="text" name="leitung" placeholder="Chorleitung" required>
+    <input type="number" name="sänger" placeholder="Anzahl SängerInnen" required>
+    <input type="text" name="konzert" placeholder="Nächstes Konzert (TT.MM.JJJJ)" required>
+    <input type="text" name="stopp" placeholder="Aufnahmestopp? (ja/nein)" required>
+    <input type="url" name="website" placeholder="Website">
+    <input type="email" name="kontakt" placeholder="Kontakt-E-Mail" required>
+    <input type="url" name="logo" placeholder="Logo-Bild-URL">
+    <input type="text" name="beschreibung" placeholder="Kurzbeschreibung">
+    <input type="text" name="longitude" placeholder="Längengrad" required>
+    <input type="text" name="latitude" placeholder="Breitengrad" required>
+    <input type="password" name="passwort" placeholder="Zugangspasswort" required>
+
+    <!-- Submit -->
+    <button type="submit">Chor eintragen</button>
+  </form>
+</section>
+  </main>
+
+  <footer class="main-footer">
+  <div class="footer-brand">
+    <h2 class="footer-title">Kneipenchöre<br>vernetzt</h2>
+  </div>
+  <nav class="footer-nav">
+    <div class="footer-sections">
+      <section class="footer-section">
+        <h3 class="section-title">Festival</h3>
+        <p class="section-content">
+          Hier gibt es alle Infos zum jährlich statt findenden Kneipenchor-Festival:<br>
+            <a href="https://karlsruherkneipenchor.de/festival/" target="_blank" rel="noopener noreferrer">www.karlsruherkneipenchor.de</a>
+        </p>
+      </section>
+      <section class="footer-section">
+        <h3 class="section-title">Kontakt</h3>
+        <p class="section-content">
+          Jimmy Röck<br>
+          c/o Kulturzentrum Tollhaus<br>
+          Alter Schlachthof 35<br>
+          76131 Karlsruhe<br>
+           <a href="mailto:info@karlsruherkneipenchor.de">kontakt@kneipenchor.net</a>
+        </p>
+      </section>
+      <section class="footer-section">
+        <h3 class="section-title">Info</h3>
+        <p class="section-content">
+          Über uns<br>
+          Impressum<br>
+          Datenschutz
+        </p>
+      </section>
+    </div>
+  </nav>
+</footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
+
+    // Öffnen / Schließen bei Klick auf Hamburger
+    hamburger.addEventListener('click', (event) => {
+      event.stopPropagation(); // Verhindert Schließen bei eigenem Klick
+      const isOpen = mainNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      hamburger.classList.toggle('active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Schließen bei Klick außerhalb des Menüs
+    document.addEventListener('click', (event) => {
+      const isOpen = mainNav.classList.contains('open');
+      if (isOpen && !mainNav.contains(event.target) && !hamburger.contains(event.target)) {
+        mainNav.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+    
+  });
+</script>
+
 </body>
 </html>
