@@ -158,7 +158,7 @@
     const chöre = new Set();
 
     events.forEach(ev => {
-      monate.add(formatMonat(ev.Datum));
+      monate.add(formatMonat(ev.Konzertdatum));
       orte.add(ev.Ort);
       chöre.add(ev.Chorname);
     });
@@ -204,7 +204,7 @@
       el.className = "event-item";
       el.innerHTML = `
   <strong>${ev.Eventtitel}</strong><br>
-  <em>${ev.Datum} ${ev.Uhrzeit} — ${ev.Ort}</em><br>
+  <em>${ev.Konzertdatum} ${ev.Uhrzeit} — ${ev.Ort}</em><br>
   Chor: ${ev.Chorname}<br>
   ${ev.Beschreibung}<br>
   ${ev.Link ? `<a href="${ev.Link}" target="_blank" rel="noopener noreferrer">Mehr Infos</a>` : ""}
@@ -218,7 +218,7 @@
     download: true,
     header: true,
     complete: function(results) {
-      alleEvents = results.data.filter(row => row.Datum);
+      alleEvents = results.data.filter(row => row.Konzertdatum);
       populateDropdowns(alleEvents);
       renderEvents(alleEvents);
     }
