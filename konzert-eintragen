@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Konzert eintragen</title>
+  <link rel="stylesheet" href="Kneipenchor.css" />
+</head>
+<body>
+
+  <!-- Header wie gewohnt -->
+  <header class="main-header">...</header>
+
+  <main class="form-page">
+    <section class="form-intro">
+      <h1>Konzert eintragen</h1>
+      <p>
+        Tragt hier euren nächsten Kneipenchor-Auftritt ein.<br>
+        Damit der Termin erscheint, achtet bitte auf folgende Hinweise:
+      </p>
+      <ul>
+        <li>Verwendet das korrekte Datum im Format: <strong>TT.MM.JJJJ</strong></li>
+        <li>Der <strong>Chorname</strong> sollte genau dem Eintrag auf der Karte entsprechen</li>
+        <li>Ggf. ein <strong>Link</strong> zur Ticketseite oder mehr Infos angeben</li>
+        <li>Ein <strong>Passwort</strong> ist nötig – dieses habt ihr per Mail oder über eure Chorleitung</li>
+      </ul>
+    </section>
+
+    <section class="form-container">
+      <!-- Hier kommt das eingebettete Formular -->
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfD5Pg5cD4g_G03O07z7I1fAPjq3jzL9BrNNdREfiMip27wFQ/viewform?embedded=true" width="640" height="1490" frameborder="0" marginheight="0" marginwidth="0">Wird geladen…</iframe>
+    </section>
+  </main>
+
+  <!-- Footer wie gewohnt -->
+  <footer class="main-footer">...</footer>
+
+</body>
+</html>
