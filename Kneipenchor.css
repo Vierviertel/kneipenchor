@@ -1029,11 +1029,28 @@ iframe[src*="docs.google.com/forms"] {
 .form-intro {
   width: 100%;
   max-width: 100%;
-  margin: 0;
+  margin: 0 auto;
   padding: 1.5rem;
+  max-width: 800px;
+  box-sizing: border-box;
 }
 .form-intro li {
   margin-bottom: 16px;
+}
+.form-page {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.form-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+.form-container iframe {
+  width: 100%;
+  border: none;
+  display: block;
 }
 
 
