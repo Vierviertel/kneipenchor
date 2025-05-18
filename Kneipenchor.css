@@ -1044,7 +1044,7 @@ iframe[src*="docs.google.com/forms"] {
 .form-container {
   max-width: 800px;
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 0;
   box-sizing: border-box;
 }
 .form-container iframe {
