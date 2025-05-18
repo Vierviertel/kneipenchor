@@ -1024,6 +1024,7 @@ iframe[src*="docs.google.com/forms"] {
   max-width: 100%;
   border: none;
   margin: 2rem auto;
+  scrolling: no;
 }
 
 .form-intro {
