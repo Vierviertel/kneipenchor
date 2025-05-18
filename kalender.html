@@ -86,8 +86,8 @@
     <select id="chor-filter">
       <option value="">Chor wählen</option>
     </select>
-    <select id="ort-filter">
-      <option value="">Ort wählen</option>
+    <select id="veranstaltungsort-filter">
+      <option value="">Veranstaltungsort wählen</option>
     </select>
   </div>
 
@@ -141,7 +141,7 @@
   const filters = {
     Monat: document.getElementById("month-filter"),
     Chor: document.getElementById("chor-filter"),
-    Ort: document.getElementById("ort-filter"),
+    Veranstaltungsort: document.getElementById("veranstaltungsort-filter"),
   };
 
   const eventContainer = document.getElementById("events");
@@ -159,12 +159,12 @@
 
     events.forEach(ev => {
       monate.add(formatMonat(ev.Konzertdatum));
-      orte.add(ev.Ort);
+      orte.add(ev.Veranstaltungsort);
       chöre.add(ev.Chorname);
     });
 
     addOptions(filters.Monat, [...monate].sort());
-    addOptions(filters.Ort, [...orte].sort());
+    addOptions(filters.Veranstaltungsort, [...orte].sort());
     addOptions(filters.Chor, [...chöre].sort());
   }
 
@@ -179,14 +179,14 @@
 
   function filterAndRender() {
     const selectedMonat = filters.Monat.value;
-    const selectedOrt = filters.Ort.value;
+    const selectedVeranstaltungsort = filters.Veranstaltungsort.value;
     const selectedChor = filters.Chor.value;
 
     const gefiltert = alleEvents.filter(ev => {
       const matchMonat = !selectedMonat || formatMonat(ev.Datum) === selectedMonat;
-      const matchOrt = !selectedOrt || ev.Ort === selectedOrt;
+      const matchVeranstaltungsort = !selectedVeranstaltungsort || ev.Veranstaltungsort === selectedVeranstaltungsort;
       const matchChor = !selectedChor || ev.Chorname === selectedChor;
-      return matchMonat && matchOrt && matchChor;
+      return matchMonat && matchVeranstaltungsort && matchChor;
     });
 
     renderEvents(gefiltert);
@@ -204,7 +204,7 @@
       el.className = "event-item";
       el.innerHTML = `
   <strong>${ev.Eventtitel}</strong><br>
-  <em>${ev.Konzertdatum} ${ev.Uhrzeit} — ${ev.Ort}</em><br>
+  <em>${ev.Konzertdatum} ${ev.Uhrzeit} — ${ev.Veranstaltungsort}</em><br>
   Chor: ${ev.Chorname}<br>
   ${ev.Beschreibung}<br>
   ${ev.Link ? `<a href="${ev.Link}" target="_blank" rel="noopener noreferrer">Mehr Infos</a>` : ""}
