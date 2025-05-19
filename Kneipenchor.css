@@ -1043,7 +1043,12 @@ iframe[src*="docs.google.com/forms"] {
   box-sizing: border-box;
 }
 .form-container {
-  max-width: 800px;
+  width: 100%;
+  max-width: 900px;
+  height: 1700px;
+  border: none;
+  overflow: hidden;
+  display: block;
   margin: 2rem auto;
   padding: 0;
   box-sizing: border-box;
@@ -1052,6 +1057,14 @@ iframe[src*="docs.google.com/forms"] {
   width: 100%;
   border: none;
   display: block;
+}
+
+/* Für kleine Bildschirme: weniger Höhe, automatischer Rand */
+@media (max-width: 600px) {
+  .form-container iframe {
+    height: 1800px;
+    padding: 0 10px;
+  }
 }
 
 
