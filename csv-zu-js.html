@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSV zu chor-daten.js</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <input type="file" id="csvFile" accept=".csv" />
+  <pre id="output"></pre>
+
+  <script>
+    document.getElementById("csvFile").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      Papa.parse(file, {
+        header: true,
+        skipEmptyLines: true,
+        complete: function (results) {
+          const chorDaten = results.data.map((row) => {
+            return `{
+  "type": "Feature",
+  "geometry": { "type": "Point", "coordinates": [0, 0] },
+  "properties": {
+    name: "${row.name}",
+    stadt: "${row.stadt}",
+    bundesland: "${row.bundesland}",
+    beschreibung: "${row.beschreibung}",
+    leitung: "${row.leitung}",
+    saenger: ${row.saenger},
+    genres: "${row.genres}",
+    aufnahmestopp: ${row.aufnahmestopp.toLowerCase() === 'true'},
+    bild: "${row.bild}",
+    kontakt: "${row.kontakt}",
+    link: "${row.link}"
+  }
+}`;
+          });
+
+          document.getElementById("output").textContent = `const chorDaten = [\n${chorDaten.join(",\n\n")}\n];`;
+        },
+      });
+    });
+  </script>
+</body>
+</html>
