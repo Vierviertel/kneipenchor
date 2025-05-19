@@ -9,15 +9,14 @@
 <body>
 
 <header class="main-header">
-   <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" type="button">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</button>
+  <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" type="button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
 
-  
   <h1 class="site-title">Kneipenchöre vernetzt</h1>
- 
+
   <nav class="main-nav">
     <ul class="nav-list">
       <li><a href="index.html" class="nav-link">Startseite</a></li>
@@ -29,47 +28,32 @@
   </nav>
 </header>
 
-  <main class="form-page">
-    <section class="form-intro">
-  <h1>Chor auf Karte eintragen</h1>
-  <p>Bitte tragt euren Chor sorgfältig ein. Wichtig:</p>
-  <ul>
-    <li>Verwendet <strong>das Passwort</strong>, das ihr per Mail bekommen habt.</li>
-    <li>Chorname muss identisch zur Karte sein.</li>
-    <li>Latitude / Longitude könnt ihr mit <a href="https://www.latlong.net/" target="_blank">latlong.net</a> ermitteln.</li>
-  </ul>
-</section>
+<main class="form-page">
+  <section class="form-intro">
+    <h1>Chor auf Karte eintragen</h1>
+    <p>Bitte tragt euren Chor sorgfältig ein. Wichtig:</p>
+    <ul>
+      <li>Verwendet <strong>das Passwort</strong>, das ihr per Mail bekommen habt.</li>
+      <li>Chorname muss identisch zur Karte sein.</li>
+      <li>Latitude / Longitude könnt ihr mit <a href="https://www.latlong.net/" target="_blank">latlong.net</a> ermitteln.</li>
+    </ul>
+  </section>
 
+  <section class="form-container">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdH3ULENce_7IlAgJjALxZYXD0MEP15xNM9y9vBJf3zS8ALmA/viewform?embedded=true" 
+      width="100%" 
+      height="1700" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0" 
+      style="border: none; overflow: hidden;">
+      Wird geladen…
+    </iframe>
+  </section>
+</main>
 
-    <section class="form-container">
-  <form action="https://formsubmit.co/mail@anna-kalus.de" method="POST">
-    <!-- Formsubmit Konfiguration -->
-    <input type="hidden" name="_subject" value="Neuer Chor-Eintrag von der Karte!">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://kneipenchor.de/danke.html">
-
-    <!-- Eingabefelder -->
-    <input type="text" name="name" placeholder="Chorname" required>
-    <input type="text" name="leitung" placeholder="Chorleitung" required>
-    <input type="number" name="sänger" placeholder="Anzahl SängerInnen" required>
-    <input type="text" name="konzert" placeholder="Nächstes Konzert (TT.MM.JJJJ)" required>
-    <input type="text" name="stopp" placeholder="Aufnahmestopp? (ja/nein)" required>
-    <input type="url" name="website" placeholder="Website">
-    <input type="email" name="kontakt" placeholder="Kontakt-E-Mail" required>
-    <input type="url" name="logo" placeholder="Logo-Bild-URL">
-    <input type="text" name="beschreibung" placeholder="Kurzbeschreibung">
-    <input type="text" name="longitude" placeholder="Längengrad" required>
-    <input type="text" name="latitude" placeholder="Breitengrad" required>
-    <input type="password" name="passwort" placeholder="Zugangspasswort" required>
-
-    <!-- Submit -->
-    <button type="submit">Chor eintragen</button>
-  </form>
-</section>
-  </main>
-
-  <footer class="main-footer">
+<footer class="main-footer">
   <div class="footer-brand">
     <h2 class="footer-title">Kneipenchöre<br>vernetzt</h2>
   </div>
@@ -78,8 +62,8 @@
       <section class="footer-section">
         <h3 class="section-title">Festival</h3>
         <p class="section-content">
-          Hier gibt es alle Infos zum jährlich statt findenden Kneipenchor-Festival:<br>
-            <a href="https://karlsruherkneipenchor.de/festival/" target="_blank" rel="noopener noreferrer">www.karlsruherkneipenchor.de</a>
+          Infos zum Festival:<br>
+          <a href="https://karlsruherkneipenchor.de/festival/" target="_blank" rel="noopener noreferrer">www.karlsruherkneipenchor.de</a>
         </p>
       </section>
       <section class="footer-section">
@@ -89,7 +73,7 @@
           c/o Kulturzentrum Tollhaus<br>
           Alter Schlachthof 35<br>
           76131 Karlsruhe<br>
-           <a href="mailto:info@karlsruherkneipenchor.de">kontakt@kneipenchor.net</a>
+          <a href="mailto:info@karlsruherkneipenchor.de">kontakt@kneipenchor.net</a>
         </p>
       </section>
       <section class="footer-section">
@@ -104,21 +88,19 @@
   </nav>
 </footer>
 
-  <script>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const mainNav = document.querySelector('.main-nav');
 
-    // Öffnen / Schließen bei Klick auf Hamburger
     hamburger.addEventListener('click', (event) => {
-      event.stopPropagation(); // Verhindert Schließen bei eigenem Klick
+      event.stopPropagation();
       const isOpen = mainNav.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       hamburger.classList.toggle('active', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Schließen bei Klick außerhalb des Menüs
     document.addEventListener('click', (event) => {
       const isOpen = mainNav.classList.contains('open');
       if (isOpen && !mainNav.contains(event.target) && !hamburger.contains(event.target)) {
@@ -128,7 +110,6 @@
         document.body.style.overflow = '';
       }
     });
-    
   });
 </script>
 
