@@ -998,6 +998,9 @@ select {
   background-color: #fdfdfd;
   text-align: left;
 }
+.calendar-section h2 {
+  text-align: left;
+}
 
 .calendar-section select {
   max-width: 318px;
