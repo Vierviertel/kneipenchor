@@ -2,15 +2,32 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>CSV zu chor-daten.js</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <title>CSV zu chor-daten.js (PapaParse)</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+    }
+    textarea {
+      width: 100%;
+      height: 400px;
+      font-family: monospace;
+    }
+  </style>
 </head>
 <body>
+
+  <h1>CSV → chor-daten.js Konverter</h1>
+  <p>Lade eine CSV-Datei mit Chor-Daten hoch. Du bekommst den fertigen JS-Code zum Einfügen in <code>chor-daten.js</code>.</p>
+
   <input type="file" id="csvFile" accept=".csv" />
-  <pre id="output"></pre>
+  <br><br>
+
+  <textarea id="output" readonly placeholder="Hier erscheint dein JavaScript-Code…"></textarea>
 
   <script>
-    document.getElementById("csvFile").addEventListener("change", function (e) {
+    document.getElementById('csvFile').addEventListener('change', function (e) {
       const file = e.target.files[0];
       if (!file) return;
 
@@ -18,30 +35,39 @@
         header: true,
         skipEmptyLines: true,
         complete: function (results) {
-          const chorDaten = results.data.map((row) => {
-            return `{
-  "type": "Feature",
-  "geometry": { "type": "Point", "coordinates": [0, 0] },
-  "properties": {
-    name: "${row.name}",
-    stadt: "${row.stadt}",
-    bundesland: "${row.bundesland}",
-    beschreibung: "${row.beschreibung}",
-    leitung: "${row.leitung}",
-    saenger: ${row.saenger},
-    genres: "${row.genres}",
-    aufnahmestopp: ${row.aufnahmestopp.toLowerCase() === 'true'},
-    bild: "${row.bild}",
-    kontakt: "${row.kontakt}",
-    link: "${row.link}"
-  }
-}`;
+          const data = results.data;
+          let jsOutput = 'const chorDaten = [\n';
+
+          data.forEach(row => {
+            jsOutput += `  {\n`;
+            jsOutput += `    type: "Feature",\n`;
+            jsOutput += `    geometry: {\n`;
+            jsOutput += `      type: "Point",\n`;
+            jsOutput += `      coordinates: [${row.longitude}, ${row.latitude}]\n`;
+            jsOutput += `    },\n`;
+            jsOutput += `    properties: {\n`;
+            jsOutput += `      name: "${row.name}",\n`;
+            jsOutput += `      stadt: "${row.stadt}",\n`;
+            jsOutput += `      bundesland: "${row.bundesland}",\n`;
+            jsOutput += `      beschreibung: "${row.beschreibung}",\n`;
+            jsOutput += `      leitung: "${row.leitung}",\n`;
+            jsOutput += `      saenger: ${row.saenger},\n`;
+            jsOutput += `      genres: "${row.genres}",\n`;
+            jsOutput += `      aufnahmestopp: ${row.aufnahmestopp === 'true'},\n`;
+            jsOutput += `      bild: "${row.bild}",\n`;
+            jsOutput += `      kontakt: "${row.kontakt}",\n`;
+            jsOutput += `      link: "${row.link}"\n`;
+            jsOutput += `    }\n`;
+            jsOutput += `  },\n`;
           });
 
-          document.getElementById("output").textContent = `const chorDaten = [\n${chorDaten.join(",\n\n")}\n];`;
-        },
+          jsOutput += '];';
+
+          document.getElementById('output').value = jsOutput;
+        }
       });
     });
   </script>
+
 </body>
 </html>
