@@ -247,19 +247,25 @@
 
 
   function filterAndRender() {
-    const selectedMonat = filters.Monat.value;
-    const selectedVeranstaltungsort = filters.Veranstaltungsort.value;
-    const selectedChor = filters.Chor.value;
+  const selectedMonat = filters.Monat.value;
+  const selectedOrt = filters.Veranstaltungsort.value;
+  const selectedChor = filters.Chor.value;
 
-    const gefiltert = alleEvents.filter(ev => {
-      const matchMonat = !selectedMonat || formatMonat(ev.Konzertdatum) === selectedMonat;
-      const matchVeranstaltungsort = !selectedVeranstaltungsort || ev.Veranstaltungsort === selectedVeranstaltungsort;
-      const matchChor = !selectedChor || ev.Chorname === selectedChor;
-      return matchMonat && matchVeranstaltungsort && matchChor;
-    });
+  const gefiltert = alleEvents.filter(ev => {
+    const monat = formatMonat(ev.Konzertdatum);
+    const ort = ev.Veranstaltungsort?.trim() || "";
+    const chor = ev.Chorname?.trim() || "";
 
-    renderEvents(gefiltert);
-  }
+    const passtMonat = !selectedMonat || monat === selectedMonat;
+    const passtOrt = !selectedOrt || ort === selectedOrt;
+    const passtChor = !selectedChor || chor === selectedChor;
+
+    return passtMonat && passtOrt && passtChor;
+  });
+
+  renderEvents(gefiltert);
+}
+
 
   function renderEvents(events) {
     eventContainer.innerHTML = "";
