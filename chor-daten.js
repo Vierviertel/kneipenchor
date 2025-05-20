@@ -113,7 +113,7 @@ const chorDaten = {
     type: "Feature",
     geometry: {
       type: "Point",
-      coordinates: [10.686.559, 53.865.467]
+      coordinates: [10.686559, 53.865467]
     },
     properties: {
       name: "Lübecker Kneipenchor",
