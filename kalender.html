@@ -148,15 +148,31 @@
   let alleEvents = [];
 
   function formatMonat(dateStr) {
-  if (!dateStr) return "Unbekannt";
-  const [jahr, monat] = dateStr.split("-");
-  const monate = [
-    "Januar", "Februar", "März", "April", "Mai", "Juni",
-    "Juli", "August", "September", "Oktober", "November", "Dezember"
-  ];
-  return `${monate[parseInt(monat, 10) - 1]} ${jahr}`;
-}
+    if (!dateStr || typeof dateStr !== "string") return "Unbekannt";
+    const parts = dateStr.trim().split("-");
+    if (parts.length !== 3) return "Unbekannt";
+    const tag = parts[0];
+    const monat = parseInt(parts[1], 10);
+    const jahr = parts[2];
+    const monate = [
+      "Januar", "Februar", "März", "April", "Mai", "Juni",
+      "Juli", "August", "September", "Oktober", "November", "Dezember"
+    ];
+    if (isNaN(monat) || monat < 1 || monat > 12) return "Unbekannt";
+    return `${monate[monat - 1]} ${jahr}`;
+  }
 
+  function monatSortKey(monatJahrStr) {
+    // Wandelt z. B. "Mai 2025" in 202505
+    const parts = monatJahrStr.split(" ");
+    const monate = {
+      "Januar": 1, "Februar": 2, "März": 3, "April": 4, "Mai": 5, "Juni": 6,
+      "Juli": 7, "August": 8, "September": 9, "Oktober": 10, "November": 11, "Dezember": 12
+    };
+    const monat = monate[parts[0]];
+    const jahr = parseInt(parts[1], 10);
+    return jahr * 100 + monat;
+  }
 
   function populateDropdowns(events) {
     const monate = new Set();
@@ -169,12 +185,13 @@
       chöre.add(ev.Chorname);
     });
 
-    addOptions(filters.Monat, [...monate].sort());
+    addOptions(filters.Monat, [...monate].sort((a, b) => monatSortKey(a) - monatSortKey(b)));
     addOptions(filters.Veranstaltungsort, [...orte].sort());
     addOptions(filters.Chor, [...chöre].sort());
   }
 
   function addOptions(select, options) {
+    select.innerHTML = '<option value="">Alle wählen</option>';
     options.forEach(opt => {
       const o = document.createElement("option");
       o.value = opt;
@@ -208,15 +225,13 @@
     events.forEach(ev => {
       const el = document.createElement("div");
       el.className = "event-item";
-     el.innerHTML = `
-  <strong>${ev.Chorname}</strong><br>
-  <em>${ev.Konzertdatum} ${ev.Uhrzeit} — ${ev.Veranstaltungsort}</em><br>
-  ${ev.Eventtitel ? `Titel: ${ev.Eventtitel}<br>` : ""}
-  ${ev.Beschreibung ? `${ev.Beschreibung}<br>` : ""}
-  ${ev.Link ? `<a href="${ev.Link}" target="_blank" rel="noopener noreferrer">Mehr Infos</a>` : ""}
-`;
-
-
+      el.innerHTML = `
+        <strong>${ev.Chorname}</strong><br>
+        <em>${ev.Konzertdatum} ${ev.Uhrzeit} — ${ev.Veranstaltungsort}</em><br>
+        ${ev.Eventtitel ? `Titel: ${ev.Eventtitel}<br>` : ""}
+        ${ev.Beschreibung ? `${ev.Beschreibung}<br>` : ""}
+        ${ev.Link ? `<a href="${ev.Link}" target="_blank" rel="noopener noreferrer">Mehr Infos</a>` : ""}
+      `;
       eventContainer.appendChild(el);
     });
   }
@@ -233,6 +248,7 @@
 
   Object.values(filters).forEach(f => f.addEventListener("change", filterAndRender));
 </script>
+
 
 <!-- Hamburger Script -->
 <script>
