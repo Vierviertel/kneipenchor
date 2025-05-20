@@ -212,25 +212,32 @@
   }
 
   function addOptions(select, options, placeholderText) {
-    const currentValue = select.value;
-    select.innerHTML = "";
+  const currentValue = select.value;
+  select.innerHTML = "";
 
-    const placeholder = document.createElement("option");
-    placeholder.value = "";
-    placeholder.textContent = placeholderText;
-    placeholder.disabled = true;
-    placeholder.selected = !currentValue; // nur ausgewählt, wenn kein Wert gesetzt
-    placeholder.hidden = true;
-    select.appendChild(placeholder);
+  // Platzhalter (disabled, nicht auswählbar)
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = placeholderText;
+  placeholder.disabled = true;
+  placeholder.selected = !currentValue;
+  select.appendChild(placeholder);
 
-    options.forEach(opt => {
-      const o = document.createElement("option");
-      o.value = opt;
-      o.textContent = opt;
-      if (opt === currentValue) o.selected = true; // ausgewählt lassen, falls vorhanden
-      select.appendChild(o);
-    });
-  }
+  // Option "Alle anzeigen" als auswählbare Option
+  const alleOption = document.createElement("option");
+  alleOption.value = "";
+  alleOption.textContent = "Alle anzeigen";
+  select.appendChild(alleOption);
+
+  options.forEach(opt => {
+    const o = document.createElement("option");
+    o.value = opt;
+    o.textContent = opt;
+    if (opt === currentValue) o.selected = true;
+    select.appendChild(o);
+  });
+}
+
 
   function filterAndRender() {
     const selectedMonat = filters.Monat.value;
