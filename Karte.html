@@ -1,28 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kneipenchor Map</title>
-  <link rel="stylesheet" href="Kneipenchor.css">
-  <!-- Mapbox CSS + JS -->
-  <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.css" rel="stylesheet">
-  
-
+  <link rel="stylesheet" href="Kneipenchor.css" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.1/mapbox-gl.css" rel="stylesheet" />
 </head>
 <body>
 
 <header class="main-header">
-   <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" type="button">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</button>
+  <button class="hamburger" aria-label="Menü öffnen" aria-expanded="false" type="button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
 
-  
   <h1 class="site-title">Kneipenchöre vernetzt</h1>
- 
+
   <nav class="main-nav">
     <ul class="nav-list">
       <li><a href="index.html" class="nav-link">Startseite</a></li>
@@ -41,112 +36,72 @@
   </div>
 </section>
 
-<!-- Chorauflistung ... 
-
-  <div class="filter-section">
-    <h2 class="filter-title">Filter</h2>
-    <div class="filter-buttons">
-      <button class="filter-btn">
-        <span>hessen</span>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/112d605ea3783cfb074f2459c61477ff5c811142?placeholderIfAbsent=true&apiKey=3ba8581990fc4391bc60c3f91f7fe979" alt="Filter Icon" />
-      </button>
-      <button class="filter-btn">
-        <span>Rock / Pop</span>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/112d605ea3783cfb074f2459c61477ff5c811142?placeholderIfAbsent=true&apiKey=3ba8581990fc4391bc60c3f91f7fe979" alt="Filter Icon" />
-      </button>
-      <button class="filter-btn">
-        <span>Probentag: DI</span>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/112d605ea3783cfb074f2459c61477ff5c811142?placeholderIfAbsent=true&apiKey=3ba8581990fc4391bc60c3f91f7fe979" alt="Filter Icon" />
-      </button>
-      <button class="filter-btn">
-        <span>ohne aufnahmestopp</span>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d7d339c7b56ecc13e92124e2a846da4aeaa9a164?placeholderIfAbsent=true&apiKey=3ba8581990fc4391bc60c3f91f7fe979" alt="Filter Icon" />
-      </button>
-    </div>
-  </div> -->
-
-<!-- Filter ... -->   
-
-  <div class="filter-section">
+<!-- Filter -->
+<section class="filter-section">
   <h2 class="filter-title">Filter</h2>
-    
   <select id="bundesland-filter">
-  <option value="alle">Alle Bundesländer</option>
-  <option value="Baden-Württemberg">Baden-Württemberg</option>
-  <option value="Berlin">Berlin</option>
-</select>
-
-<select id="genre-filter">
-  <option value="alle">Alle Genres</option>
-  <option value="Pop">Pop</option>
-  <option value="Rock">Rock</option>
-</select>
-
+    <option value="">Bundesland wählen</option>
+  </select>
+  <select id="genre-filter">
+    <option value="">Genre wählen</option>
+  </select>
   <label>
-  <input type="checkbox" id="aufnahmestopp-filter" />
-  Nur Chöre ohne Aufnahmestopp
-</label>
-    </div>
+    <input type="checkbox" id="aufnahmestopp-filter" />
+    Nur Chöre ohne Aufnahmestopp
+  </label>
+</section>
 
-    <!-- Liste... -->    
-    
-  <section id="chor-liste">
-    <div id="choir-list" class="choir-list"></div>
-  </section>
-   
-  
+<!-- Chorauflistung -->
+<section id="chor-liste">
+  <div id="choir-list" class="choir-list"></div>
+</section>
 
+<!-- Chor-Overlay (Punkt 4: Wird dynamisch über karte.js eingeblendet) -->
+
+<!-- Kontaktbereich -->
 <section class="contact-section">
   <div class="contact-content">
     <div class="contact-info">
-      <h2 class="contact-title">
-        Chor auf die Karte?<br>
-        Einfach melden!
-      </h2>
+      <h2 class="contact-title">Chor auf die Karte?<br>Einfach melden!</h2>
       <p class="contact-description">
-        Gemeinsam klingen wir weiter - tragt euren Chor ein und werdet Teil der Kneipenchor-Community, die Musik und Miteinander liebt.<br><br>
+        Gemeinsam klingen wir weiter – tragt euren Chor ein und werdet Teil der Kneipenchor-Community, die Musik und Miteinander liebt.<br><br>
         <a href="eintragen.html" class="nav-link">Hier</a> könnt Ihr Euch direkt eintragen. Ihr habt Feedback, braucht Hilfe beim Eintragen oder das nötige Passwort?<br>
         Meldet euch gerne: <strong><a href="mailto:kontakt@kneipenchor.net">kontakt@kneipenchor.net</a></strong>
       </p>
     </div>
+
     <form class="contact-form" action="https://formsubmit.co/info@karlsruherkneipenchor.de" method="POST">
-  <!-- Formsubmit Hidden Fields -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://deine-seite.de/danke.html">
-  <input type="hidden" name="_subject" value="Neue Nachricht vom Kneipenchor-Formular">
-  <input type="text" name="_honey" style="display:none">
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://deine-seite.de/danke.html" />
+      <input type="hidden" name="_subject" value="Neue Nachricht vom Kneipenchor-Formular" />
+      <input type="text" name="_honey" style="display: none;" />
 
-  <!-- Vor- & Nachname -->
-  <div class="form-group">
-    <label>Name <span class="required">(erforderlich)</span></label>
-    <div class="name-inputs">
-      <div class="input-group">
-        <label for="firstname">Vorname</label>
-        <input type="text" id="firstname" name="Vorname" class="form-input" required />
+      <div class="form-group">
+        <label>Name <span class="required">(erforderlich)</span></label>
+        <div class="name-inputs">
+          <div class="input-group">
+            <label for="firstname">Vorname</label>
+            <input type="text" id="firstname" name="Vorname" class="form-input" required />
+          </div>
+          <div class="input-group">
+            <label for="lastname">Nachname</label>
+            <input type="text" id="lastname" name="Nachname" class="form-input" required />
+          </div>
+        </div>
       </div>
-      <div class="input-group">
-        <label for="lastname">Nachname</label>
-        <input type="text" id="lastname" name="Nachname" class="form-input" required />
+
+      <div class="form-group">
+        <label for="email">E-Mail-Adresse <span class="required">(erforderlich)</span></label>
+        <input type="email" id="email" name="Email" class="form-input" required />
       </div>
-    </div>
-  </div>
 
-  <!-- E-Mail -->
-  <div class="form-group">
-    <label for="email">E-Mail-Adresse <span class="required">(erforderlich)</span></label>
-    <input type="email" id="email" name="Email" class="form-input" required />
-  </div>
+      <div class="form-group">
+        <label for="message">Nachricht <span class="required">(erforderlich)</span></label>
+        <textarea id="message" name="Nachricht" class="form-input" required style="min-height: 88px;"></textarea>
+      </div>
 
-  <!-- Nachricht -->
-  <div class="form-group">
-    <label for="message">Nachricht <span class="required">(erforderlich)</span></label>
-    <textarea id="message" name="Nachricht" class="form-input" required style="min-height: 88px;"></textarea>
-  </div>
-
-  <!-- Absenden -->
-  <button type="submit" class="submit-button">senden</button>
-</form>
-
+      <button type="submit" class="submit-button">senden</button>
+    </form>
   </div>
 </section>
 
@@ -154,13 +109,14 @@
   <div class="footer-brand">
     <h2 class="footer-title">Kneipenchöre<br>vernetzt</h2>
   </div>
+
   <nav class="footer-nav">
     <div class="footer-sections">
       <section class="footer-section">
         <h3 class="section-title">Festival</h3>
         <p class="section-content">
-          Hier gibt es alle Infos zum jährlich statt findenden Kneipenchor-Festival:<br>
-            <a href="https://karlsruherkneipenchor.de/festival/" target="_blank" rel="noopener noreferrer">www.karlsruherkneipenchor.de</a>
+          Infos zum jährlichen Kneipenchor-Festival:<br>
+          <a href="https://karlsruherkneipenchor.de/festival/" target="_blank" rel="noopener noreferrer">www.karlsruherkneipenchor.de</a>
         </p>
       </section>
       <section class="footer-section">
@@ -170,7 +126,7 @@
           c/o Kulturzentrum Tollhaus<br>
           Alter Schlachthof 35<br>
           76131 Karlsruhe<br>
-           <a href="mailto:info@karlsruherkneipenchor.de">kontakt@kneipenchor.net</a>
+          <a href="mailto:info@karlsruherkneipenchor.de">kontakt@kneipenchor.net</a>
         </p>
       </section>
       <section class="footer-section">
@@ -185,30 +141,25 @@
   </nav>
 </footer>
 
-
-<!-- Mapbox Script -->
-
+<!-- JavaScript -->
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-  <script src="chor-daten.js"></script>
-  <!-- danach: dein Mapbox-Code, der `chorDaten` verwendet -->
-  <script src="karte.js"></script>
-  <script src="liste-filter.js"></script>
-  
+<script src="chor-daten.js"></script>
+<script src="karte.js"></script> <!-- enthält auch Punkt 4: Overlay-Logik -->
+<script src="liste-filter.js"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const mainNav = document.querySelector('.main-nav');
 
-    // Öffnen / Schließen bei Klick auf Hamburger
     hamburger.addEventListener('click', (event) => {
-      event.stopPropagation(); // Verhindert Schließen bei eigenem Klick
+      event.stopPropagation();
       const isOpen = mainNav.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       hamburger.classList.toggle('active', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Schließen bei Klick außerhalb des Menüs
     document.addEventListener('click', (event) => {
       const isOpen = mainNav.classList.contains('open');
       if (isOpen && !mainNav.contains(event.target) && !hamburger.contains(event.target)) {
@@ -221,9 +172,5 @@
   });
 </script>
 
-
-  
-
-  
 </body>
 </html>
