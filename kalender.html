@@ -202,13 +202,14 @@
     events.forEach(ev => {
       const el = document.createElement("div");
       el.className = "event-item";
-      el.innerHTML = `
-  <strong>${ev.Eventtitel}</strong><br>
+     el.innerHTML = `
+  <strong>${ev.Chorname}</strong><br>
   <em>${ev.Konzertdatum} ${ev.Uhrzeit} — ${ev.Veranstaltungsort}</em><br>
-  Chor: ${ev.Chorname}<br>
-  ${ev.Beschreibung}<br>
+  ${ev.Eventtitel ? `Titel: ${ev.Eventtitel}<br>` : ""}
+  ${ev.Beschreibung ? `${ev.Beschreibung}<br>` : ""}
   ${ev.Link ? `<a href="${ev.Link}" target="_blank" rel="noopener noreferrer">Mehr Infos</a>` : ""}
 `;
+
 
       eventContainer.appendChild(el);
     });
