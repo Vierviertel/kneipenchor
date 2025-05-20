@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Chor-Karten generieren
   function renderList(features) {
     container.innerHTML = "";
     features.forEach((feature) => {
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Filter anwenden
   function applyFilters() {
     const bundesland = bundeslandFilter.value;
     const genre = genreFilter.value;
@@ -60,40 +62,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const filtered = chorDaten.features.filter((feature) => {
       const props = feature.properties;
-      const matchBundesland = bundesland === "alle" || props.bundesland === bundesland;
-      const matchGenre = genre === "alle" || props.genres === genre;
+      const matchBundesland = !bundesland || props.bundesland === bundesland;
+      const matchGenre =
+        !genre ||
+        (Array.isArray(props.genres)
+          ? props.genres.includes(genre)
+          : props.genres === genre);
       const matchAufnahmestopp = !ohneAufnahmestopp || props.aufnahmestopp === false;
+
       return matchBundesland && matchGenre && matchAufnahmestopp;
     });
 
     renderList(filtered);
   }
 
+  // Dropdown-Werte aus chorDaten generieren
+  function populateFilters() {
+    const bundeslaender = new Set();
+    const genres = new Set();
+
+    chorDaten.features.forEach((feature) => {
+      const props = feature.properties;
+      if (props.bundesland) bundeslaender.add(props.bundesland);
+      if (props.genres) {
+        if (Array.isArray(props.genres)) {
+          props.genres.forEach((g) => genres.add(g));
+        } else {
+          genres.add(props.genres);
+        }
+      }
+    });
+
+    // Sortieren
+    const sortedBundeslaender = [...bundeslaender].sort();
+    const sortedGenres = [...genres].sort();
+
+    // Füllen
+    sortedBundeslaender.forEach((bl) => {
+      const option = document.createElement("option");
+      option.value = bl;
+      option.textContent = bl;
+      bundeslandFilter.appendChild(option);
+    });
+
+    sortedGenres.forEach((g) => {
+      const option = document.createElement("option");
+      option.value = g;
+      option.textContent = g;
+      genreFilter.appendChild(option);
+    });
+  }
+
+  // Eventlistener für Filter
   bundeslandFilter.addEventListener("change", applyFilters);
   genreFilter.addEventListener("change", applyFilters);
   aufnahmestoppFilter.addEventListener("change", applyFilters);
 
-  // Initial render
+  // Initialisierung
+  populateFilters();
   renderList(chorDaten.features);
 });
-
-const aufnahmestoppFilter = document.getElementById("aufnahmestopp-filter");
-
-function applyFilters() {
-  const bundesland = bundeslandFilter.value;
-  const genre = genreFilter.value;
-  const ohneAufnahmestopp = aufnahmestoppFilter.checked;
-const matchAufnahmestopp = !ohneAufnahmestopp || props.aufnahmestopp === false;
-
-  const filtered = chorDaten.features.filter((feature) => {
-    const props = feature.properties;
-    const matchBundesland = bundesland === "alle" || props.bundesland === bundesland;
-    const matchGenre = genre === "alle" || (Array.isArray(props.genres) ? props.genres.includes(genre) : props.genres === genre);
-    const matchAufnahmestopp = !ohneAufnahmestopp || props.aufnahmestopp === false;
-    return matchBundesland && matchGenre && matchAufnahmestopp;
-  });
-
-  renderList(filtered);
-}
-
-aufnahmestoppFilter.addEventListener("change", applyFilters);
