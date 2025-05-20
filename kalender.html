@@ -195,21 +195,28 @@
   }
 
   function populateDropdowns(events) {
-    const monate = new Set();
-    const orte = new Set();
-    const chöre = new Set();
+  const monate = new Set();
+  const orte = new Set();
+  const chöre = new Set();
 
-    events.forEach(ev => {
-      const monat = formatMonat(ev.Konzertdatum);
-      monate.add(monat);
-      orte.add(ev.Veranstaltungsort);
-      chöre.add(ev.Chorname);
-    });
+  events.forEach(ev => {
+    const monat = formatMonat(ev.Konzertdatum);
+    if (monat !== "Unbekannt") monate.add(monat);
 
-    addOptions(filters.Monat, [...monate].sort((a, b) => monatSortKey(a) - monatSortKey(b)), "Monat wählen");
-    addOptions(filters.Veranstaltungsort, [...orte].sort(), "Ort wählen");
-    addOptions(filters.Chor, [...chöre].sort(), "Chor wählen");
-  }
+    if (ev.Veranstaltungsort && ev.Veranstaltungsort.trim() !== "") {
+      orte.add(ev.Veranstaltungsort.trim());
+    }
+
+    if (ev.Chorname && ev.Chorname.trim() !== "") {
+      chöre.add(ev.Chorname.trim());
+    }
+  });
+
+  addOptions(filters.Monat, [...monate].sort((a, b) => monatSortKey(a) - monatSortKey(b)), "Monat wählen");
+  addOptions(filters.Veranstaltungsort, [...orte].sort(), "Ort wählen");
+  addOptions(filters.Chor, [...chöre].sort(), "Chor wählen");
+}
+
 
   function addOptions(select, options, placeholderText) {
   const currentValue = select.value;
