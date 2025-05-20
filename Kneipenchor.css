@@ -1067,4 +1067,26 @@ iframe[src*="docs.google.com/forms"] {
   }
 }
 
+.content-section {
+  padding: 4rem 1rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.section-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+
 
