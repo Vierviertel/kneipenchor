@@ -1001,6 +1001,9 @@ select {
 .calendar-section h2 {
   text-align: left;
 }
+.section p {
+  padding: 6rem 2rem;
+}
 
 .calendar-section select {
   max-width: 318px;
