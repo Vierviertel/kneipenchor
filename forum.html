@@ -37,10 +37,72 @@
   </main>
 
   <!-- Footer (identisch mit index.html) -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Kneipenchor-Netzwerk. Alle Rechte vorbehalten.</p>
+  <footer class="main-footer">
+  <div class="footer-brand">
+    <h2 class="footer-title">Kneipenchöre<br>vernetzt</h2>
+  </div>
+
+  <nav class="footer-nav">
+    <div class="footer-sections">
+      <section class="footer-section">
+        <h3 class="section-title">Festival</h3>
+        <p class="section-content">
+          Infos zum jährlichen Kneipenchor-Festival:<br>
+          <a href="https://karlsruherkneipenchor.de/festival/" target="_blank" rel="noopener noreferrer">www.karlsruherkneipenchor.de</a>
+        </p>
+      </section>
+      <section class="footer-section">
+        <h3 class="section-title">Kontakt</h3>
+        <p class="section-content">
+          Jimmy Röck<br>
+          c/o Kulturzentrum Tollhaus<br>
+          Alter Schlachthof 35<br>
+          76131 Karlsruhe<br>
+          <a href="mailto:info@karlsruherkneipenchor.de">kontakt@kneipenchor.net</a>
+        </p>
+      </section>
+      <section class="footer-section">
+        <h3 class="section-title">Info</h3>
+        <p class="section-content">
+          Über uns<br>
+          Impressum<br>
+          Datenschutz
+        </p>
+      </section>
     </div>
-  </footer>
+  </nav>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+<script src="chor-daten.js"></script>
+<script src="karte.js"></script> <!-- enthält auch Punkt 4: Overlay-Logik -->
+<script src="liste-filter.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.querySelector('.main-nav');
+
+    hamburger.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = mainNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      hamburger.classList.toggle('active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    document.addEventListener('click', (event) => {
+      const isOpen = mainNav.classList.contains('open');
+      if (isOpen && !mainNav.contains(event.target) && !hamburger.contains(event.target)) {
+        mainNav.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
