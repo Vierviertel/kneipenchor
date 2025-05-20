@@ -211,27 +211,27 @@
     addOptions(filters.Chor, [...chöre].sort(), "Chor wählen");
   }
 
-  function addOptions(select, options) {
-    select.innerHTML = '<option value="">Alle wählen</option>';
-    options.forEach(opt => {
-      const o = document.createElement("option");
-      o.value = opt;
-      o.textContent = opt;
-      select.appendChild(o);
-    });
-  }
+ function addOptions(select, options, placeholderText) {
+  const currentValue = select.value;
+  select.innerHTML = "";
 
-  function filterAndRender() {
-    const selectedMonat = filters.Monat.value;
-    const selectedVeranstaltungsort = filters.Veranstaltungsort.value;
-    const selectedChor = filters.Chor.value;
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = placeholderText;
+  placeholder.disabled = true;
+  placeholder.selected = !currentValue; // nur ausgewählt, wenn kein Wert gesetzt
+  placeholder.hidden = true;
+  select.appendChild(placeholder);
 
-    const gefiltert = alleEvents.filter(ev => {
-      const matchMonat = !selectedMonat || formatMonat(ev.Konzertdatum) === selectedMonat;
-      const matchVeranstaltungsort = !selectedVeranstaltungsort || ev.Veranstaltungsort === selectedVeranstaltungsort;
-      const matchChor = !selectedChor || ev.Chorname === selectedChor;
-      return matchMonat && matchVeranstaltungsort && matchChor;
-    });
+  options.forEach(opt => {
+    const o = document.createElement("option");
+    o.value = opt;
+    o.textContent = opt;
+    if (opt === currentValue) o.selected = true; // ausgewählt lassen, falls vorhanden
+    select.appendChild(o);
+  });
+}
+
 
     renderEvents(gefiltert);
   }
