@@ -206,9 +206,9 @@
       chöre.add(ev.Chorname);
     });
 
-    addOptions(filters.Monat, [...monate].sort((a, b) => monatSortKey(a) - monatSortKey(b)));
-    addOptions(filters.Veranstaltungsort, [...orte].sort());
-    addOptions(filters.Chor, [...chöre].sort());
+    addOptions(filters.Monat, [...monate].sort((a, b) => monatSortKey(a) - monatSortKey(b)), "Monat wählen");
+    addOptions(filters.Veranstaltungsort, [...orte].sort(), "Ort wählen");
+    addOptions(filters.Chor, [...chöre].sort(), "Chor wählen");
   }
 
   function addOptions(select, options) {
