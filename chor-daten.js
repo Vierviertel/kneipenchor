@@ -107,6 +107,7 @@ const chorDaten = {
         kontakt: "kneipenchor-Mannheim@web.de",
         link: "https://kneipenchormannheim.wordpress.com/"
       }
+    },
 
         {
     type: "Feature",
@@ -128,7 +129,7 @@ const chorDaten = {
       link: "https://christiansondermann.de/luebecker-kneipenchor/"
     }
   },
-    }
+  
 
     
 
