@@ -148,9 +148,15 @@
   let alleEvents = [];
 
   function formatMonat(dateStr) {
-    const [jahr, monat] = dateStr.split("-"); // YYYY-MM-DD
-    return `${jahr}-${monat}`;
-  }
+  if (!dateStr) return "Unbekannt";
+  const [jahr, monat] = dateStr.split("-");
+  const monate = [
+    "Januar", "Februar", "März", "April", "Mai", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "Dezember"
+  ];
+  return `${monate[parseInt(monat, 10) - 1]} ${jahr}`;
+}
+
 
   function populateDropdowns(events) {
     const monate = new Set();
@@ -183,7 +189,7 @@
     const selectedChor = filters.Chor.value;
 
     const gefiltert = alleEvents.filter(ev => {
-      const matchMonat = !selectedMonat || formatMonat(ev.Datum) === selectedMonat;
+      const matchMonat = !selectedMonat || formatMonat(ev.Konzertdatum) === selectedMonat;
       const matchVeranstaltungsort = !selectedVeranstaltungsort || ev.Veranstaltungsort === selectedVeranstaltungsort;
       const matchChor = !selectedChor || ev.Chorname === selectedChor;
       return matchMonat && matchVeranstaltungsort && matchChor;
