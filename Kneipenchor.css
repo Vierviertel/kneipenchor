@@ -894,6 +894,7 @@ select {
   letter-spacing: 2.1px;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
