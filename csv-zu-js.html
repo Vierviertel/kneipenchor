@@ -2,72 +2,63 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>CSV zu chor-daten.js (PapaParse)</title>
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <title>CSV zu chor-daten.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 2rem;
-    }
-    textarea {
-      width: 100%;
-      height: 400px;
-      font-family: monospace;
-    }
+    body { font-family: sans-serif; padding: 1em; }
+    textarea { width: 100%; height: 400px; margin-top: 1em; }
   </style>
 </head>
 <body>
-
-  <h1>CSV → chor-daten.js Konverter</h1>
-  <p>Lade eine CSV-Datei mit Chor-Daten hoch. Du bekommst den fertigen JS-Code zum Einfügen in <code>chor-daten.js</code>.</p>
-
+  <h1>CSV in chor-daten.js umwandeln (mit Koordinaten)</h1>
   <input type="file" id="csvFile" accept=".csv" />
-  <br><br>
-
-  <textarea id="output" readonly placeholder="Hier erscheint dein JavaScript-Code…"></textarea>
+  <textarea id="output" placeholder="Hier erscheint der JS-Code..." readonly></textarea>
 
   <script>
-    document.getElementById('csvFile').addEventListener('change', function (e) {
-      const file = e.target.files[0];
+    document.getElementById("csvFile").addEventListener("change", function (event) {
+      const file = event.target.files[0];
       if (!file) return;
 
       Papa.parse(file, {
         header: true,
         skipEmptyLines: true,
         complete: function (results) {
-          const data = results.data;
-          let jsOutput = 'const chorDaten = [\n';
+          const daten = results.data;
+          let output = "const chorDaten = [\n";
 
-          data.forEach(row => {
-            jsOutput += `  {\n`;
-            jsOutput += `    type: "Feature",\n`;
-            jsOutput += `    geometry: {\n`;
-            jsOutput += `      type: "Point",\n`;
-            jsOutput += `      coordinates: [${row.longitude}, ${row.latitude}]\n`;
-            jsOutput += `    },\n`;
-            jsOutput += `    properties: {\n`;
-            jsOutput += `      name: "${row.name}",\n`;
-            jsOutput += `      stadt: "${row.stadt}",\n`;
-            jsOutput += `      bundesland: "${row.bundesland}",\n`;
-            jsOutput += `      beschreibung: "${row.beschreibung}",\n`;
-            jsOutput += `      leitung: "${row.leitung}",\n`;
-            jsOutput += `      saenger: ${row.saenger},\n`;
-            jsOutput += `      genres: "${row.genres}",\n`;
-            jsOutput += `      aufnahmestopp: ${row.aufnahmestopp === 'true'},\n`;
-            jsOutput += `      bild: "${row.bild}",\n`;
-            jsOutput += `      kontakt: "${row.kontakt}",\n`;
-            jsOutput += `      link: "${row.link}"\n`;
-            jsOutput += `    }\n`;
-            jsOutput += `  },\n`;
+          daten.forEach((eintrag) => {
+            const longitude = parseFloat(eintrag.longitude);
+            const latitude = parseFloat(eintrag.latitude);
+
+            if (isNaN(longitude) || isNaN(latitude)) return;
+
+            output += `  {\n`;
+            output += `    type: "Feature",\n`;
+            output += `    geometry: {\n`;
+            output += `      type: "Point",\n`;
+            output += `      coordinates: [${longitude}, ${latitude}]\n`;
+            output += `    },\n`;
+            output += `    properties: {\n`;
+            output += `      name: "${eintrag.name}",\n`;
+            output += `      stadt: "${eintrag.stadt}",\n`;
+            output += `      bundesland: "${eintrag.bundesland}",\n`;
+            output += `      beschreibung: "${eintrag.beschreibung}",\n`;
+            output += `      leitung: "${eintrag.leitung}",\n`;
+            output += `      saenger: ${eintrag.saenger},\n`;
+            output += `      genres: "${eintrag.genres}",\n`;
+            output += `      aufnahmestopp: ${eintrag.aufnahmestopp === "ja"},\n`;
+            output += `      bild: "${eintrag.bild}",\n`;
+            output += `      kontakt: "${eintrag.kontakt}",\n`;
+            output += `      link: "${eintrag.link}"\n`;
+            output += `    }\n`;
+            output += `  },\n`;
           });
 
-          jsOutput += '];';
-
-          document.getElementById('output').value = jsOutput;
+          output += "];";
+          document.getElementById("output").value = output;
         }
       });
     });
   </script>
-
 </body>
 </html>
