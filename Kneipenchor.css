@@ -996,7 +996,7 @@ select {
 .calendar-section {
   padding: 4rem 2rem;
   background-color: #fdfdfd;
-  text-align: center;
+  text-align: left;
 }
 
 .calendar-title {
