@@ -107,7 +107,30 @@ const chorDaten = {
         kontakt: "kneipenchor-Mannheim@web.de",
         link: "https://kneipenchormannheim.wordpress.com/"
       }
+
+        {
+    type: "Feature",
+    geometry: {
+      type: "Point",
+      coordinates: [10.686.559, 53.865.467]
+    },
+    properties: {
+      name: "Lübecker Kneipenchor",
+      stadt: "Lübeck",
+      bundesland: "Schleswig-Holstein",
+      beschreibung: "Der Lübecker Kneipenchor ist der Action-Chor in der schönen Hansestadt. Bei Bier und Spaß – statt Wasser und Seidenschals – ballern wir die größten Ohrwürmer und die besten B-Sides der neueren Musikgeschichte.",
+      leitung: "Christian Sondermann",
+      saenger: 70,
+      genres: "Indie-Coolesse, partypushender Trash",
+      aufnahmestopp: false,
+      bild: "https://christiansondermann.de/wp-content/uploads/2023/12/LKC-Stagedive-Foto-Tim-Wichelmann-scaled.jpg",
+      kontakt: "kontakt@christiansondermann.de",
+      link: "https://christiansondermann.de/luebecker-kneipenchor/"
     }
+  },
+    }
+
+    
 
 
   ]
