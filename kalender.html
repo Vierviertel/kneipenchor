@@ -149,21 +149,28 @@
 
   function formatMonat(dateStr) {
     if (!dateStr || typeof dateStr !== "string") return "Unbekannt";
-    const parts = dateStr.trim().split("-");
+    const cleaned = dateStr.trim().replace(/\./g, "-").replace(/\//g, "-"); // z. B. "04.05.2025" → "04-05-2025"
+    const parts = cleaned.split("-");
     if (parts.length !== 3) return "Unbekannt";
-    const tag = parts[0];
-    const monat = parseInt(parts[1], 10);
-    const jahr = parts[2];
+
+    let tag = parts[0];
+    let monat = parts[1];
+    let jahr = parts[2];
+
+    // Eventuelle führende Nullen entfernen
+    monat = parseInt(monat, 10);
+    jahr = parseInt(jahr, 10);
+
     const monate = [
       "Januar", "Februar", "März", "April", "Mai", "Juni",
       "Juli", "August", "September", "Oktober", "November", "Dezember"
     ];
-    if (isNaN(monat) || monat < 1 || monat > 12) return "Unbekannt";
+
+    if (!monat || monat < 1 || monat > 12) return "Unbekannt";
     return `${monate[monat - 1]} ${jahr}`;
   }
 
   function monatSortKey(monatJahrStr) {
-    // Wandelt z. B. "Mai 2025" in 202505
     const parts = monatJahrStr.split(" ");
     const monate = {
       "Januar": 1, "Februar": 2, "März": 3, "April": 4, "Mai": 5, "Juni": 6,
@@ -180,7 +187,8 @@
     const chöre = new Set();
 
     events.forEach(ev => {
-      monate.add(formatMonat(ev.Konzertdatum));
+      const monat = formatMonat(ev.Konzertdatum);
+      monate.add(monat);
       orte.add(ev.Veranstaltungsort);
       chöre.add(ev.Chorname);
     });
@@ -248,6 +256,7 @@
 
   Object.values(filters).forEach(f => f.addEventListener("change", filterAndRender));
 </script>
+
 
 
 <!-- Hamburger Script -->
