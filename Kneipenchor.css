@@ -1104,7 +1104,7 @@ iframe[src*="docs.google.com/forms"] {
 /* ---------------------------------------- */
 
 /* Datenschutzerklärung linksbündig */
-.section-description.datenschutz-text {
+.datenschutz-content {
   text-align: left !important;
   white-space: pre-line;
   line-height: 1.6;
