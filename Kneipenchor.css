@@ -1099,6 +1099,17 @@ iframe[src*="docs.google.com/forms"] {
   font-size: 1.2rem;
   line-height: 1.6;
 }
+/* ---------------------------------------- */
+/* ========== Datenschutz ================ */
+/* ---------------------------------------- */
+
+/* Datenschutzerklärung linksbündig */
+.section-description.datenschutz-text {
+  text-align: left !important;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
 
 
 
