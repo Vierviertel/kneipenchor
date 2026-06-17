@@ -39,6 +39,9 @@ body {
 .break {
   display: block;
 }
+a {
+    color: var(--color-black);
+}
 
 
 
